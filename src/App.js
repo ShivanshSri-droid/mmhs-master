@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import StudentManagement from "./Pages/StudentManagement/StudentManagement";
 import Application from "./Pages/Application/Application";
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import Circular from "./Pages/Circular/Circular";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -19,6 +20,15 @@ function App() {
               <>
                 <Nav title="Dashboard" />
                 <Dashboard />
+              </>
+            }
+          />
+          <Route
+            path="/circular"
+            element={
+              <>
+                <Nav title="Circular" />
+                <Circular />
               </>
             }
           />

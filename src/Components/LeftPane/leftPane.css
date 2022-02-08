@@ -72,15 +72,34 @@
   align-items: center;
   padding: 20px 30px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 15px;
   line-height: 25px;
-  color: #717579;
+  /* color: #717579; */
   cursor: pointer;
   transition: all 0.3s;
 }
-.left_pane ul li:hover {
-  border-left: 6px solid #717579;
-}
+
 .left_pane ul li span {
   margin-right: 30px;
+}
+
+.left_pane__selected_style {
+  border-left: 6px solid #ff6175;
+  padding: 20px 24px;
+  color: #ff6175;
+  font-size: 15px;
+}
+
+.left_pane__normal_style {
+  color: #717579;
+  padding: 20px 24px;
+  font-size: 12px;
+}
+
+.left_pane__normal_style:hover {
+  border-left: 6px solid #717579;
+}
+
+.left_pane__selected_style:hover {
+  border-left: 6px solid #ff6175;
 }

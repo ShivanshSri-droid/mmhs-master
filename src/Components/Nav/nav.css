@@ -42,16 +42,17 @@
 }
 .nav_box1 {
   display: flex;
-  width: 180px;
+  width: 280px;
   height: 100%;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 .nav_box1 p {
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
   line-height: 40px;
+  margin-left: 40px;
   color: #171b1e;
 }
 .nav_box2 {
