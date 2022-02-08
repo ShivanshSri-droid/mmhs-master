@@ -1,0 +1,86 @@
+.left_pane {
+  height: 120vh;
+  width: 360px;
+  background-color: #fbfbfb;
+  border-right: 1px solid #eee;
+}
+.logo_container {
+  width: 100%;
+  margin-left: 30px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+.logo_container div {
+  margin-left: 10px;
+}
+.logo_container div p:first-child {
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 33px;
+  color: #171b1e;
+}
+.logo_container div p:last-child {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 19px;
+  color: #717579;
+}
+.user_box {
+  width: 250px;
+  height: 78px;
+  margin: 30px auto;
+  border-radius: 16px;
+  display: flex;
+  padding: 10px 15px;
+  align-items: center;
+  border: 1px solid #eee;
+}
+.user_picture {
+  width: 60px;
+  height: 60px;
+  background-color: #c4c4c4;
+  border-radius: 14px;
+  margin-right: 10px;
+}
+.user_info h3 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 27px;
+  color: #171b1e;
+}
+.user_info p {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 19px;
+  color: #717579;
+}
+.left_pane_heading {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #171b1e;
+  margin-left: 30px;
+}
+.left_pane ul {
+  list-style: none;
+  margin-top: 15px;
+}
+.left_pane ul li {
+  display: flex;
+  align-items: center;
+  padding: 20px 30px;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 25px;
+  color: #717579;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.left_pane ul li:hover {
+  border-left: 6px solid #717579;
+}
+.left_pane ul li span {
+  margin-right: 30px;
+}

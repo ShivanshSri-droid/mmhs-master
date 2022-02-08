@@ -1,0 +1,77 @@
+.unpaid_card {
+  width: 540px;
+  height: 719px;
+  margin-top: 40px;
+  background: #ffffff;
+  box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
+  border-radius: 16px;
+  padding: 30px;
+}
+.unpaid_card h3 {
+  color: #202020;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+.unpaid_card h6 {
+  color: #717579;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.list_box {
+  width: 100%;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.img_box {
+  height: 58px;
+  width: 58px;
+  border-radius: 16px;
+}
+.list_info1 {
+  width: 200px;
+}
+.list_info1 h4 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 25px;
+  color: #171b1e;
+  margin-bottom: 10px;
+}
+.list_info1 p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 22px;
+  color: #717579;
+}
+.list_info2 {
+  display: flex;
+  align-items: center;
+}
+.list_info2 div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-left: 15px;
+}
+.list_info2 div h3 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 27px;
+  color: #ff6175;
+  margin-bottom: 0;
+}
+.list_info2 div p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 22px;
+  color: #717579;
+}
+.list_info3 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 27px;
+  text-align: right;
+  color: #171b1e;
+}

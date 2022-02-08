@@ -1,0 +1,29 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.App {
+  display: flex;
+  background-color: #fbfbfb;
+}
+.main_container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-left: 1px solid #eee;
+}
+.primary_text {
+  color: #171b1e;
+}
+.secondary_text {
+  color: #717579;
+}
+.bottom-theme {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+  box-shadow: 0 -1px 80px 80px rgba(255, 255, 255, 0.8);
+}
