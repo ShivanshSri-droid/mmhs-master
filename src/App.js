@@ -17,6 +17,9 @@ function App() {
     <div className="App">
       <LeftPane />
       <div className="main_container">
+      <Nav 
+        title="Application"
+      />
         {/* <Student_Management/>  */}
         {/* <Application/>  */}
         <AboutUs/>

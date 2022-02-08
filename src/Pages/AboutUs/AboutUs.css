@@ -1,7 +1,102 @@
-.about_us__top_p {
+.about_us {
+  margin: 30px;
+}
+
+.about_us__top {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.about_us__top_div {
   background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 150px;
   border-top-right-radius: 15px;
   border-top-left-radius: 15px;
-  height: 20px;
-  width: 200px;
+}
+
+.about_us__top_button {
+  font-size: 14px;
+  font-weight: 400;
+  background-color: #ffaa2b;
+  height: 40px;
+  width: 160px;
+  border-radius: 15px;
+  border: none;
+  color: #fff;
+}
+
+.about_us__middle_logo {
+  margin-top: 10px;
+  height: 110px;
+  width: 120px;
+}
+
+.about_us__middle_div {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  margin-top: 20px;
+  height: 55px;
+  width: 250px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.about_us__middle_p_map {
+  margin-top: 10px;
+  background-color: #fff;
+  height: 350px;
+  width: 1100px;
+  border-radius: 15px;
+  padding: 20px;
+}
+
+.about_us__middle_p_map p {
+  padding-left: 5px;
+  font-size: 17px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.about_us__middle_p_map img {
+  height: 200px;
+  width: 630px;
+}
+
+.about_us__bottom_contact {
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  padding-left: 24px;
+  margin-top: 30px;
+  height: 55px;
+  width: 250px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+}
+
+.about_us__bottom_contact_div {
+  font-size: 16px;
+  font-weight: 500;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 24px;
+  margin-top: 30px;
+  height: 150px;
+  width: 1150px;
+  border-radius: 15px;
+}
+
+.about_us__bottom_extra {
+  height: 90px;
 }
