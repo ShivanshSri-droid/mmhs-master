@@ -1,5 +1,6 @@
 .application {
   margin-top: 30px;
+  padding-top: 25px;
 }
 .application__top_button_date_img {
   height: 15px;
@@ -8,8 +9,8 @@
 }
 
 .application__top_button_date {
-  height: 45px;
-  width: 90px;
+  height: 35px;
+  width: 70px;
   margin: 5px 10px 5px 30px;
   border-radius: 16px;
   box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
@@ -29,8 +30,8 @@
 }
 
 .application__top_button_go {
-  height: 45px;
-  width: 90px;
+  height: 35px;
+  width: 70px;
   margin: 5px 10px;
   border: none;
   background-color: #ffaa2b;

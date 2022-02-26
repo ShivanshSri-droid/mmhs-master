@@ -270,6 +270,7 @@ const LeftPane = () => {
           Fees Management 1
         </li>
         </Link>
+        <Link to="fee_report">
         <li
         onClick = {() => setFliter(11) }
         className={filter===11?"left_pane__selected_style":"left_pane__normal_style"}
@@ -299,6 +300,7 @@ const LeftPane = () => {
           </span>
           Fees Management 2
         </li>
+        </Link>
         <Link to="/new_admission">
         <li
         onClick = {() => setFliter(10) }

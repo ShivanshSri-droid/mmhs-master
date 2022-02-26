@@ -9,6 +9,7 @@ import Advertisment from "./Pages/Advertisment/Advertisment";
 import Circular from "./Pages/Circular/Circular";
 import Admission from "./Pages/Admission/Admission"
 import Setup from "./Pages/Fees/Setup/Setup"
+import Report from "./Pages/Fees/Report/Report"
 import Teacher from "./Pages/Teacher/Teacher";
 import { Route, Routes } from "react-router-dom";
 
@@ -42,6 +43,15 @@ function App() {
               <>
                 <Nav title="Fees Management" />
                 <Setup />
+              </>
+            }
+          />
+          <Route
+            path="/fee_report"
+            element={
+              <>
+                <Nav title="Fees Management" />
+                <Report />
               </>
             }
           />

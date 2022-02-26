@@ -1,17 +1,18 @@
-.circular {
+.report {
   margin-top: 30px;
+  width: 1200px;
   padding: 25px;
 }
-.circular__top_button_date_img {
-  height: 15px;
-  width: 15px;
+.report__top_button_date_img {
+  height: 12px;
+  width: 12px;
   margin-right: 10px;
 }
 
-.circular__top_button_date {
+.report__top_button_date {
   height: 35px;
   width: 70px;
-  margin: 5px 10px 5px 10px;
+  margin: 5px 10px 5px 30px;
   border-radius: 16px;
   box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
   display: flex;
@@ -21,14 +22,14 @@
   border: none;
   color: black;
   font-weight: bold;
-  font-size: 17px;
+  font-size: 14px;
 }
 
-.circular__top_button_date:hover {
+.report__top_button_date:hover {
   background-color: #e6e3e3;
 }
 
-.circular__top_button_go {
+.report__top_button_go {
   height: 35px;
   width: 70px;
   margin: 5px 10px;
@@ -41,52 +42,87 @@
   font-size: 14px;
 }
 
-.circular__top_button_go:hover {
+.report__top_button_go:hover {
   background-color: #e69a28;
 }
 
-.circular__top {
+.report__top {
+  width: 1200px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
-.circular__top_button_circular {
+.report__top_left {
+  width: 600px;
+  display: flex;
+}
+
+.report__top_button_report {
   width: 160px;
-  margin-right: 30px;
+  margin-bottom: 30px;
+  margin-right: 120px;
 }
 
-.circular__top_button_left_most {
+.report__top_button_img {
+  height: 22px;
+  width: 22px;
+}
+
+.report__top_button_button {
+  height: 35px;
+  width: 175px;
+  margin: 5px 10px;
+  background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+  text-decoration: none;
+  border: none;
+  color: black;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.report__top_button_right_most {
   width: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.circular__middle {
+.report__middle {
   overflow-y: scroll;
+  overflow-x: hidden;
   height: 550px;
-  width: 1200px;
+  padding-left: 20px;
+  width: 1330px;
   background-color: #fff;
   border-radius: 16px;
   box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
 }
 
-.circular__middle::-webkit-scrollbar {
+.misc {
+  padding-left: 20px;
+}
+
+.report__middle::-webkit-scrollbar {
   display: none;
 }
 
-.circular__middle::-webkit-scrollbar {
-  display: none;
-}
-
-.circular__middle_th {
+report__middle_th {
   margin: 15px;
   overflow: visible;
   white-space: nowrap;
   padding: 25px 25px;
 }
 
+table {
+  width: 100%;
+}
+
 th {
-  height: 55px;
   border-bottom: 2px solid #f4f4f4;
   font-size: 15px;
 }
@@ -94,15 +130,16 @@ th {
 td {
   border-bottom: 1px solid #f5f5f5;
   font-weight: 500;
+  text-align: center;
 }
 
-.circular__middle_td {
+.report__middle_td {
   overflow: visible;
   white-space: nowrap;
   padding: 0 25px;
 }
 
-.circular__middle_td_edit {
+.report__middle_td_edit {
   height: 35px;
   margin: 5px;
   width: 65px;
@@ -114,7 +151,7 @@ td {
   border: none;
 }
 
-.circular__middle_td_delete {
+.report__middle_td_delete {
   margin: 5px;
   height: 35px;
   width: 65px;
@@ -126,7 +163,26 @@ td {
   border: none;
 }
 
-.circular__bottom {
+.report__middle_td_status {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  height: 40px;
+  width: 110px;
+  border-radius: 15px;
+}
+.paid {
+  background-color: #12b264;
+}
+.unpaid {
+  background-color: #ff2525;
+}
+
+.report__bottom {
   margin-left: 30px;
   margin-right: 50px;
   margin-top: 40px;
@@ -134,11 +190,11 @@ td {
   justify-content: space-between;
 }
 
-.circular__bottom p {
+.report__bottom p {
   font-weight: 700;
   color: #717579;
 }
-.circular__bottom_box {
+.report__bottom_box {
   height: 50px;
   width: 300px;
   display: flex;
@@ -146,7 +202,7 @@ td {
   align-items: center;
 }
 
-.circular__button_box_num {
+.report__button_box_num {
   color: #ff6175;
   cursor: pointer;
   font-weight: 700;
@@ -154,7 +210,7 @@ td {
   background-color: #fff;
 }
 
-.circular__bottom_box_selected_num {
+.report__bottom_box_selected_num {
   height: 45px;
   width: 45px;
   border-radius: 15px;
@@ -165,7 +221,7 @@ td {
   font-weight: 700;
 }
 
-.circular__button_box_arrow {
+.report__button_box_arrow {
   background-color: #fbfbfb;
   cursor: pointer;
   border: none;
