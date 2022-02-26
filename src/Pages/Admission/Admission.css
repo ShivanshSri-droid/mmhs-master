@@ -1,43 +1,9 @@
-.teacher {
+.admission {
   margin-top: 30px;
   padding: 25px;
 }
 
-.teacher__top {
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-}
-
-.teacher__top_button_img {
-  height: 22px;
-  width: 22px;
-}
-
-.teacher__top_button_button {
-  height: 35px;
-  width: 175px;
-  margin: 5px 10px;
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0px 4px 6px rgba(62, 73, 84, 0.04);
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background-color: #fff;
-  text-decoration: none;
-  border: none;
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-.teacher__top_button_button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 9px 38px rgba(62, 73, 84, 0.1);
-}
-
-.teacher__middle {
+.admission__middle {
   overflow-y: scroll;
   height: 550px;
   padding-left: 20px;
@@ -51,15 +17,15 @@ table {
   width: 1150px;
 }
 
-.teacher__middle::-webkit-scrollbar {
+.admission__middle::-webkit-scrollbar {
   display: none;
 }
 
-.teacher__middle::-webkit-scrollbar {
+.admission__middle::-webkit-scrollbar {
   display: none;
 }
 
-teacher__middle_th {
+admission__middle_th {
   margin: 15px;
   overflow: visible;
   white-space: nowrap;
@@ -74,26 +40,52 @@ th {
 td {
   border-bottom: 1px solid #f5f5f5;
   font-weight: 500;
+  height: 60px;
   text-align: center;
 }
 
-.teacher__middle_td {
+.admission__middle_td {
   overflow: visible;
   white-space: nowrap;
   padding: 0 25px;
 }
 
-.teacher__middle_td_gp {
+.admission__middle_td_buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
+.admission__middle_td_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  height: 40px;
+  width: 90px;
+  border-radius: 15px;
+}
+
+.pending {
+  background-color: #391995;
+}
+.proceed {
+  background-color: #1eae7a;
+}
+
+.admission__middle_td_gp {
   display: flex;
   justify-content: center;
 }
 
-.teacher__middle_td_generate_password a {
+.admission__middle_td_generate_password a {
   text-decoration: none;
   color: #fff;
 }
 
-.teacher__middle_td_generate_password {
+.admission__middle_td_generate_password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,7 +96,7 @@ td {
   border-radius: 15px;
 }
 
-.teacher__bottom {
+.admission__bottom {
   margin-left: 30px;
   margin-right: 50px;
   margin-top: 40px;
@@ -112,11 +104,11 @@ td {
   justify-content: space-between;
 }
 
-.teacher__bottom p {
+.admission__bottom p {
   font-weight: 700;
   color: #717579;
 }
-.teacher__bottom_box {
+.admission__bottom_box {
   height: 50px;
   width: 300px;
   display: flex;
@@ -124,7 +116,7 @@ td {
   align-items: center;
 }
 
-.teacher__button_box_num {
+.admission__button_box_num {
   color: #ff6175;
   cursor: pointer;
   font-weight: 700;
@@ -132,7 +124,7 @@ td {
   background-color: #fff;
 }
 
-.teacher__bottom_box_selected_num {
+.admission__bottom_box_selected_num {
   height: 45px;
   width: 45px;
   border-radius: 15px;
@@ -143,7 +135,7 @@ td {
   font-weight: 700;
 }
 
-.teacher__button_box_arrow {
+.admission__button_box_arrow {
   background-color: #fbfbfb;
   cursor: pointer;
   border: none;

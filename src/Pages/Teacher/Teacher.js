@@ -9,70 +9,70 @@ import download from "../../assets/download.png";
 
 const tempData = [
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
     {
-        date: "12 / 12 / 2021",
-        title: "Covid teacher for school",
-        notice: "Duis aute irure dolor in reprehenderit ...",
-        attachment: "reprehenderit voluptate.jpg",
+        id: "#001234",
+        name: "Fanny Siregar",
+        email: "test@mmhs.com",
+        phone: "987456123",
     },
 ]
 
@@ -106,11 +106,11 @@ const Teacher = () => {
                 {tempData.map((data)=>{
                     return(
                         <tr className="teacher__middle_tr" >
-                            <td className="teacher__middle_td">{data.date}</td>
-                            <td className="teacher__middle_td">{data.title}</td>
-                            <td className="teacher__middle_td banner"><img src={advertiser_banner}></img></td>
-                            <td className="teacher__middle_td">{data.notice}</td>
-                            <td className="teacher__middle_td"><button type="button" className="teacher__middle_td_edit">Edit</button><button type="button" className="teacher__middle_td_delete">Delete</button></td>
+                            <td className="teacher__middle_td">{data.id}</td>
+                            <td className="teacher__middle_td">{data.name}</td>
+                            <td className="teacher__middle_td banner">{data.email}</td>
+                            <td className="teacher__middle_td">{data.phone}</td>
+                            <td className="teacher__middle_td teacher__middle_td_gp"><div className="teacher__middle_td_generate_password"><a href="#">Generate Password</a></div></td>
                         </tr>
                     );
                 })}

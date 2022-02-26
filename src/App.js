@@ -7,6 +7,8 @@ import Application from "./Pages/Application/Application";
 import AboutUs from "./Pages/AboutUs/AboutUs";
 import Advertisment from "./Pages/Advertisment/Advertisment";
 import Circular from "./Pages/Circular/Circular";
+import Admission from "./Pages/Admission/Admission"
+import Setup from "./Pages/Fees/Setup/Setup"
 import Teacher from "./Pages/Teacher/Teacher";
 import { Route, Routes } from "react-router-dom";
 
@@ -31,6 +33,15 @@ function App() {
               <>
                 <Nav title="Advertisment" />
                 <Advertisment />
+              </>
+            }
+          />
+          <Route
+            path="/fee_setup"
+            element={
+              <>
+                <Nav title="Fees Management" />
+                <Setup />
               </>
             }
           />
@@ -69,6 +80,16 @@ function App() {
               <>
                 <Nav title="Application" />
                 <Application />
+              </>
+            }
+          />
+          <Route
+            exact
+            path="/new_admission"
+            element={
+              <>
+                <Nav title="New Admission" />
+                <Admission />
               </>
             }
           />

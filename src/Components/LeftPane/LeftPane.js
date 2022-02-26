@@ -239,6 +239,7 @@ const LeftPane = () => {
           Teacher
         </li>
         </Link>
+        <Link to="/fee_setup">
         <li
         onClick = {() => setFliter(9) }
         className={filter===9?"left_pane__selected_style":"left_pane__normal_style"}
@@ -266,8 +267,69 @@ const LeftPane = () => {
               />
             </svg>
           </span>
-          Fees Management
+          Fees Management 1
         </li>
+        </Link>
+        <li
+        onClick = {() => setFliter(11) }
+        className={filter===11?"left_pane__selected_style":"left_pane__normal_style"}
+          // style={{normalStyle}}
+        >
+          <span>
+            <svg
+              width="18"
+              height="20"
+              viewBox="0 0 26 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.625 0.875H10.375C9.89175 0.875 9.5 1.26675 9.5 1.75V26.25C9.5 26.7332 9.89175 27.125 10.375 27.125H15.625C16.1082 27.125 16.5 26.7332 16.5 26.25V1.75C16.5 1.26675 16.1082 0.875 15.625 0.875Z"
+                fill={filter===11?"#FF6175":"#717579"}
+              />
+              <path
+                d="M24.375 9.625H19.125C18.6418 9.625 18.25 10.0168 18.25 10.5V26.25C18.25 26.7332 18.6418 27.125 19.125 27.125H24.375C24.8582 27.125 25.25 26.7332 25.25 26.25V10.5C25.25 10.0168 24.8582 9.625 24.375 9.625Z"
+                fill={filter===11?"#FF6175":"#717579"}
+              />
+              <path
+                d="M6.875 16.625H1.625C1.14175 16.625 0.75 17.0168 0.75 17.5V26.25C0.75 26.7332 1.14175 27.125 1.625 27.125H6.875C7.35825 27.125 7.75 26.7332 7.75 26.25V17.5C7.75 17.0168 7.35825 16.625 6.875 16.625Z"
+                fill={filter===11?"#FF6175":"#717579"}
+              />
+            </svg>
+          </span>
+          Fees Management 2
+        </li>
+        <Link to="/new_admission">
+        <li
+        onClick = {() => setFliter(10) }
+        className={filter===10?"left_pane__selected_style":"left_pane__normal_style"}
+          // style={{normalStyle}}
+        >
+          <span>
+            <svg
+              width="18"
+              height="20"
+              viewBox="0 0 26 28"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.625 0.875H10.375C9.89175 0.875 9.5 1.26675 9.5 1.75V26.25C9.5 26.7332 9.89175 27.125 10.375 27.125H15.625C16.1082 27.125 16.5 26.7332 16.5 26.25V1.75C16.5 1.26675 16.1082 0.875 15.625 0.875Z"
+                fill={filter===10?"#FF6175":"#717579"}
+              />
+              <path
+                d="M24.375 9.625H19.125C18.6418 9.625 18.25 10.0168 18.25 10.5V26.25C18.25 26.7332 18.6418 27.125 19.125 27.125H24.375C24.8582 27.125 25.25 26.7332 25.25 26.25V10.5C25.25 10.0168 24.8582 9.625 24.375 9.625Z"
+                fill={filter===10?"#FF6175":"#717579"}
+              />
+              <path
+                d="M6.875 16.625H1.625C1.14175 16.625 0.75 17.0168 0.75 17.5V26.25C0.75 26.7332 1.14175 27.125 1.625 27.125H6.875C7.35825 27.125 7.75 26.7332 7.75 26.25V17.5C7.75 17.0168 7.35825 16.625 6.875 16.625Z"
+                fill={filter===10?"#FF6175":"#717579"}
+              />
+            </svg>
+          </span>
+          New Admission
+        </li>
+        </Link>
         <li
         onClick = {() => setFliter(7) }
         className={filter===7?"left_pane__selected_style":"left_pane__normal_style"}
