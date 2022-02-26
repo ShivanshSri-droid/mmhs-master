@@ -5,7 +5,9 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import StudentManagement from "./Pages/StudentManagement/StudentManagement";
 import Application from "./Pages/Application/Application";
 import AboutUs from "./Pages/AboutUs/AboutUs";
+import Advertisment from "./Pages/Advertisment/Advertisment";
 import Circular from "./Pages/Circular/Circular";
+import Teacher from "./Pages/Teacher/Teacher";
 import { Route, Routes } from "react-router-dom";
 
 function App() {
@@ -20,6 +22,24 @@ function App() {
               <>
                 <Nav title="Dashboard" />
                 <Dashboard />
+              </>
+            }
+          />
+          <Route
+            path="/advertisment"
+            element={
+              <>
+                <Nav title="Advertisment" />
+                <Advertisment />
+              </>
+            }
+          />
+          <Route
+            path="/teacher"
+            element={
+              <>
+                <Nav title="Teacher" />
+                <Teacher />
               </>
             }
           />
