@@ -74,6 +74,9 @@
   padding: 20px;
   position: relative;
 }
+.nav__search_box:focus {
+  outline-color: #ff6175;
+}
 .btn_search {
   position: absolute;
   right: 20px;
