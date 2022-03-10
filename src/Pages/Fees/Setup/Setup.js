@@ -1,8 +1,11 @@
-import React from 'react';
+import React,  {useState} from 'react';
 import "./Setup.css";
 import left_arrow from "../../../assets/ic_chevron_left.png";
 import right_arrow  from "../../../assets/ic_chevron_right.png";
 import advertiser_banner  from "../../../assets/advertiser_banner.png";
+import cancel from "../../../assets/cancel.png";
+import calendar from "../../../assets/calendar.png";
+import drag_drop from "../../../assets/drag_drop.png";
 
 const tempData = [
     {
@@ -135,8 +138,62 @@ const tempData = [
 
 
 const Setup = () => {
+    
+    const [value, setValue] = useState(0);
+  
+    const handleClick1 = () => {
+      setValue(1);
+    }
+    const handleClick2 = () => {
+      setValue(0);
+    }
+  
+
   return (
       <div className="setup">
+          <div className={value===0?"setup__form_div_not_open":"setup__form_div_open"}>
+            <div className="setup__form">
+              <div className="setup__from_img" onClick={handleClick2}>
+                <img src={cancel} alt="cancel"/>
+              </div>
+              <h1>Add New Fees Setup</h1>
+              <div className="setup__form_p">
+                <p>quis nostrud exercitation ullamco</p>
+              </div>
+              <div className="setup__form_input">
+                <h5>Add Grade</h5>
+                <input type="text" className="setup__form_input_small"/>
+              </div>
+              <div className="setup__form_input ">
+                <h5>Add Tuition Fee</h5>
+                <input type="text" className=" setup__form_input_small"/>
+              </div>
+              <div className="setup__form_input ">
+                <h5>Add Computer Fee</h5>
+                <input type="text" className=" setup__form_input_small"/>
+              </div>
+              <div className="setup__form_input ">
+                <h5>Add Miscellaneous Fee</h5>
+                <input type="text" className=" setup__form_input_small"/>
+              </div>
+              <div className="setup__form_input ">
+                <h5>Add Total Fee</h5>
+                <input type="text" className=" setup__form_input_small"/>
+              </div>
+              <div className="setup__form_input ">
+                <h5>Add Late Fee</h5>
+                <input type="text" className=" setup__form_input_small"/>
+              </div>
+                <div className="setup__form_input ">
+                    <h5>Add Late Fee Date</h5>
+                    <input type="text" className=" setup__form_input_small input_date"/>
+                    <img src={calendar} alt="calendar" />
+                </div>
+              <div className="setup__form_button">
+                <a href="#">Add Fees Setup</a>
+              </div>
+            </div>
+          </div>
           {/* <div className="setup__top">
                 <div className="setup__top_button_left_most">
                     <button type="button" className="setup__top_button_setup setup__top_button_go">Add setup</button>
@@ -146,7 +203,7 @@ const Setup = () => {
           <div className="setup__bottom"></div> */}
           <div className="setup__top">
                 <div className="setup__top_button_left_most">
-                    <button type="button" className="setup__top_button_setup setup__top_button_go">Add Fees setup</button>
+                    <button type="button" className="setup__top_button_setup setup__top_button_go" onClick={handleClick1}>Add Fees setup</button>
                 </div>
           </div>
           <div className="setup__middle">

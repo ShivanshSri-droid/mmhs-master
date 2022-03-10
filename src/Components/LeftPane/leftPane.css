@@ -1,5 +1,5 @@
 .left_pane {
-  height: 120vh;
+  height: 100vh;
   width: 360px;
   background-color: #fbfbfb;
   border-right: 1px solid #eee;
@@ -65,6 +65,8 @@
 }
 .left_pane ul {
   list-style: none;
+  height: 74vh;
+  overflow-y: scroll;
   margin-top: 15px;
 }
 .left_pane ul li {
@@ -94,6 +96,18 @@
   color: #717579;
   padding: 20px 24px;
   font-size: 12px;
+}
+
+.submenu_visible {
+  padding: 10px 24px 10px 83px !important;
+  transition: all 0.4s;
+}
+
+.submenu_invisible {
+  height: 0;
+  opacity: 0;
+  margin: 0 !important;
+  padding: 0 !important;
 }
 
 .left_pane__normal_style:hover {
