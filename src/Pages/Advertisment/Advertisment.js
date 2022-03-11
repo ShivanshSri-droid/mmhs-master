@@ -6,80 +6,18 @@ import right_arrow from "../../assets/ic_chevron_right.png";
 import advertiser_banner from "../../assets/advertiser_banner.png";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
-
-const tempData = [
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid advertisment for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-];
+import { DatePicker } from "antd";
 
 const Advertisment = () => {
   const [value, setValue] = useState(0);
-
+  const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState([]);
+  const [details, setDetails] = useState({
+    name: "",
+    from_dt: "",
+    to_dt: "",
+    description: "",
+  });
 
   const handleClick1 = () => {
     setValue(1);
@@ -96,8 +34,28 @@ const Advertisment = () => {
       });
   }, []);
 
-  console.log(data);
+  const handleChange = (e) => {
+    setDetails({
+      ...details,
+      [e.target.name]: e.target.value,
+    });
+  };
 
+  const handleSubmit = async () => {
+    await fetch("https://mmhs-mumbai.herokuapp.com/advertisements", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: details.name,
+        from: details.from_dt,
+        to: details.to_dt,
+        description: details.description,
+      }),
+    });
+    window.location.reload();
+  };
+
+  console.log(data);
   return (
     <div className="advertisment">
       <div
@@ -117,13 +75,21 @@ const Advertisment = () => {
           </div>
           <div className="advertisment__form_input">
             <h5>Add Advertisment Title</h5>
-            <input type="text" className="advertisment__form_input_small" />
+            <input
+              type="text"
+              name="name"
+              onChange={handleChange}
+              className="advertisment__form_input_small"
+            />
           </div>
           <div className="advertisment__form_input ">
             <h5>Add From Date</h5>
             <input
               type="text"
+              name="from_dt"
+              onChange={handleChange}
               className=" advertisment__form_input_small input_date"
+              placeholder="dd/mm/yyyy"
             />
             <img src={calendar} alt="calendar" />
           </div>
@@ -131,13 +97,22 @@ const Advertisment = () => {
             <h5>Add To Date</h5>
             <input
               type="text"
+              name="to_dt"
+              onChange={handleChange}
               className=" advertisment__form_input_small input_date"
+              placeholder="dd/mm/yyyy"
             />
             <img src={calendar} alt="calendar" />
           </div>
           <div className="advertisment__form_input big">
             <h5>Advertiser Description</h5>
-            <input type="text" className="advertisment__form_input_small" />
+
+            <input
+              type="text"
+              name="description"
+              onChange={handleChange}
+              className="advertisment__form_input_small"
+            />
           </div>
           <div className="advertisment__form_input">
             <h5>Add Banner</h5>
@@ -150,8 +125,8 @@ const Advertisment = () => {
               }}
             ></div>
           </div>
-          <div className="advertisment__form_button">
-            <a href="#">Add advertisment</a>
+          <div onClick={handleSubmit} className="advertisment__form_button">
+            <p style={{ color: "#fff" }}>Add advertisment</p>
           </div>
         </div>
       </div>

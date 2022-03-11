@@ -6,78 +6,14 @@ import right_arrow from "../../assets/ic_chevron_right.png";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
 
-const tempData = [
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-  {
-    date: "12 / 12 / 2021",
-    title: "Covid circular for school",
-    notice: "Duis aute irure dolor in reprehenderit ...",
-    attachment: "reprehenderit voluptate.jpg",
-  },
-];
-
 const Circular = () => {
   const [value, setValue] = useState(0);
   const [data, setData] = useState([]);
+  const [details, setDetails] = useState({
+    created: "",
+    title: "",
+    notice: "",
+  });
 
   const handleClick1 = () => {
     setValue(1);
@@ -94,7 +30,25 @@ const Circular = () => {
       });
   }, []);
 
-  console.log(data);
+  const handleChange = (e) => {
+    setDetails({
+      ...details,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async () => {
+    await fetch("https://mmhs-mumbai.herokuapp.com/circulars", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        created: details.created,
+        title: details.title,
+        notice: details.notice,
+      }),
+    });
+    window.location.reload();
+  };
 
   return (
     <div className="circular">
@@ -115,13 +69,21 @@ const Circular = () => {
           </div>
           <div className="circular__form_input">
             <h5>Add New Circular</h5>
-            <input type="text" className="circular__form_input_small" />
+            <input
+              type="text"
+              name="title"
+              onChange={handleChange}
+              className="circular__form_input_small"
+            />
           </div>
           <div className="circular__form_input ">
             <h5>Add Circuar Date</h5>
             <input
               type="text"
               className=" circular__form_input_small input_date"
+              name="created"
+              placeholder="12/03/2021"
+              onChange={handleChange}
             />
             <img src={calendar} alt="calendar" />
           </div>
@@ -138,7 +100,12 @@ const Circular = () => {
           </div>
           <div className="circular__form_input big">
             <h5>Add Circular Notice</h5>
-            <input type="text" className="circular__form_input_small" />
+            <input
+              type="text"
+              name="notice"
+              onChange={handleChange}
+              className="circular__form_input_small"
+            />
           </div>
           <div className="circular__form_input_checkbox">
             <div className="form-group">
@@ -163,8 +130,8 @@ const Circular = () => {
             </div>
           </div>
 
-          <div className="circular__form_button">
-            <a href="#">Add Circular</a>
+          <div className="circular__form_button" onClick={handleSubmit}>
+            <p style={{ color: "#fff" }}>Add Circular</p>
           </div>
         </div>
       </div>

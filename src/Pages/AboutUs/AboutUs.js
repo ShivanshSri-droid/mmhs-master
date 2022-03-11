@@ -8,6 +8,12 @@ import drag_drop from "../../assets/drag_drop.png";
 const AboutUs = (props) => {
   const [value, setValue] = useState(0);
   const [data, setData] = useState({});
+  const [details, setDetails] = useState({
+    description: "",
+    phone: "",
+    email: "",
+    address: "",
+  });
 
   const handleClick1 = () => {
     setValue(1);
@@ -24,9 +30,28 @@ const AboutUs = (props) => {
       });
   }, []);
 
-  const onSubmit = () => {
-    console.log("clicked");
+  const onSubmit = async () => {
+    await fetch("https://mmhs-mumbai.herokuapp.com/about", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        description: details.description,
+        phone: details.phone,
+        address: details.address,
+        email: details.email,
+      }),
+    });
+    window.location.reload();
   };
+
+  const handleChange = (e) => {
+    setDetails({
+      ...details,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  console.log(details);
 
   return (
     <div className="about_us">
@@ -58,7 +83,13 @@ const AboutUs = (props) => {
           </div>
           <div className="about_us__form_input">
             <h5>Add About Us</h5>
-            <input type="text" className="about_us__form_text_input" />
+            <textarea
+              type="text"
+              name="description"
+              onChange={handleChange}
+              className="about_us__form_text_input"
+              required
+            />
           </div>
           <div className="about_us__form_input">
             <h5>Add Longitude</h5>
@@ -70,18 +101,36 @@ const AboutUs = (props) => {
           </div>
           <div className="about_us__form_input">
             <h5>Add Phone</h5>
-            <input type="text" className="about_us__form_input_small" />
+            <input
+              type="text"
+              name="phone"
+              onChange={handleChange}
+              className="about_us__form_input_small"
+              required
+            />
           </div>
           <div className="about_us__form_input">
             <h5>Add Email</h5>
-            <input type="text" className="about_us__form_input_small" />
+            <input
+              type="text"
+              name="email"
+              onChange={handleChange}
+              className="about_us__form_input_small"
+              required
+            />
           </div>
           <div className="about_us__form_input">
             <h5>Add Address</h5>
-            <input type="text" className="about_us__form_input_small" />
+            <input
+              type="text"
+              name="address"
+              onChange={handleChange}
+              className="about_us__form_input_small"
+              required
+            />
           </div>
-          <div className="about_us__form_button">
-            <a href="#">Submit</a>
+          <div className="about_us__form_button" onClick={onSubmit}>
+            <p style={{ color: "#fff" }}>Submit</p>
           </div>
         </div>
       </div>

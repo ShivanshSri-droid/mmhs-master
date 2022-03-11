@@ -47,6 +47,7 @@
   background-color: #ffaa2b;
   border-radius: 15px;
   margin: 20px;
+  cursor: pointer;
 }
 
 .setup__form h1 {
@@ -120,6 +121,7 @@
   width: 270px;
   border-radius: 15px;
   border: 1px solid #c4c4c4;
+  padding: 5px;
 }
 
 .setup__form_input_small {
@@ -127,6 +129,7 @@
   width: 270px;
   border-radius: 5px;
   border: 1px solid #c4c4c4;
+  padding: 5px;
 }
 
 .input_date {

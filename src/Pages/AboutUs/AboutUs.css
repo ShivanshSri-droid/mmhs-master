@@ -47,6 +47,7 @@
   background-color: #ffaa2b;
   border-radius: 15px;
   margin: 20px;
+  cursor: pointer;
 }
 
 .about_us__form h1 {
@@ -99,6 +100,7 @@
   width: 270px;
   border-radius: 15px;
   border: 1px solid #c4c4c4;
+  padding: 10px;
 }
 
 .about_us__form_input_small {
@@ -106,6 +108,7 @@
   width: 270px;
   border-radius: 15px;
   border: 1px solid #c4c4c4;
+  padding: 10px;
 }
 
 input:focus {
