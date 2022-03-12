@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import "./Setup.css";
 import left_arrow from "../../../assets/ic_chevron_left.png";
 import right_arrow from "../../../assets/ic_chevron_right.png";
+import Fees_Form from "../../../Components/Forms/Fees/Fees_Form";
 import advertiser_banner from "../../../assets/advertiser_banner.png";
 import cancel from "../../../assets/cancel.png";
 import calendar from "../../../assets/calendar.png";
 import drag_drop from "../../../assets/drag_drop.png";
 
 const Setup = () => {
+  const [display1,setDisplay1] = useState(0);
+  const [display2,setDisplay2] = useState(0);
   const [value, setValue] = useState(0);
   const [data, setData] = useState([]);
   const [details, setDetails] = useState({
@@ -21,10 +24,10 @@ const Setup = () => {
   });
 
   const handleClick1 = () => {
-    setValue(1);
+    setDisplay1(1);
   };
   const handleClick2 = () => {
-    setValue(0);
+    setDisplay2(1);
   };
 
   useEffect(() => {
@@ -62,7 +65,17 @@ const Setup = () => {
 
   return (
     <div className="setup">
-      <div
+      {
+            display1?<Fees_Form setDisp={() => {setDisplay1(0)}} />:null
+          }
+          {
+            display2?<Fees_Form 
+                        setDisp={() => {setDisplay2(0)}} 
+                        notice = "Check"
+                        circular="Check"
+                      />:null
+          }
+      {/* <div
         className={
           value === 0 ? "setup__form_div_not_open" : "setup__form_div_open"
         }
@@ -143,7 +156,7 @@ const Setup = () => {
             <p style={{ color: "#fff" }}>Add Fees Setup</p>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* <div className="setup__top">
                 <div className="setup__top_button_left_most">
                     <button type="button" className="setup__top_button_setup setup__top_button_go">Add setup</button>
@@ -185,7 +198,7 @@ const Setup = () => {
                 <td className="setup__middle_td">{data.late}</td>
                 <td className="setup__middle_td">{data.late_date}</td>
                 <td className="setup__middle_td">
-                  <button type="button" className="setup__middle_td_edit">
+                  <button onClick={handleClick2} type="button" className="setup__middle_td_edit">
                     Edit
                   </button>
                   <button type="button" className="setup__middle_td_delete">

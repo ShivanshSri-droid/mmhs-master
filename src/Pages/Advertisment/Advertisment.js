@@ -4,11 +4,14 @@ import calendar from "../../assets/calendar.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
 import advertiser_banner from "../../assets/advertiser_banner.png";
+import Advertisment_Form from "../../Components/Forms/Advertisment/Advertisment_Form";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
 import { DatePicker } from "antd";
 
 const Advertisment = () => {
+  const [display1,setDisplay1] = useState(0);
+  const [display2,setDisplay2] = useState(0);
   const [value, setValue] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [data, setData] = useState([]);
@@ -20,10 +23,10 @@ const Advertisment = () => {
   });
 
   const handleClick1 = () => {
-    setValue(1);
+    setDisplay1(1);
   };
   const handleClick2 = () => {
-    setValue(0);
+    setDisplay2(1);
   };
 
   useEffect(() => {
@@ -58,7 +61,17 @@ const Advertisment = () => {
   console.log(data);
   return (
     <div className="advertisment">
-      <div
+      {
+            display1?<Advertisment_Form setDisp={() => {setDisplay1(0)}} />:null
+          }
+          {
+            display2?<Advertisment_Form 
+                        setDisp={() => {setDisplay2(0)}} 
+                        notice = "Check"
+                        circular="Check"
+                      />:null
+          }
+      {/* <div
         className={
           value === 0
             ? "advertisment__form_div_not_open"
@@ -129,7 +142,7 @@ const Advertisment = () => {
             <p style={{ color: "#fff" }}>Add advertisment</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="advertisment__top">
         <div className="advertisment__top_button_left_most">
           <button
@@ -163,6 +176,7 @@ const Advertisment = () => {
                   <button
                     type="button"
                     className="advertisment__middle_td_edit"
+                    onClick={handleClick2}
                   >
                     Edit
                   </button>
