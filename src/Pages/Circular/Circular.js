@@ -3,10 +3,13 @@ import "./Circular.css";
 import calendar from "../../assets/calendar.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
+import Circular_Form from "../../Components/Forms/Cicular/Circular_Form";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
 
 const Circular = () => {
+  const [display1,setDisplay1] = useState(0);
+  const [display2,setDisplay2] = useState(0);
   const [value, setValue] = useState(0);
   const [data, setData] = useState([]);
   const [details, setDetails] = useState({
@@ -16,10 +19,10 @@ const Circular = () => {
   });
 
   const handleClick1 = () => {
-    setValue(1);
+    setDisplay1(1);
   };
   const handleClick2 = () => {
-    setValue(0);
+    setDisplay2(1);
   };
 
   useEffect(() => {
@@ -52,7 +55,17 @@ const Circular = () => {
 
   return (
     <div className="circular">
-      <div
+      {
+            display1?<Circular_Form setDisp={() => {setDisplay1(0)}} />:null
+          }
+          {
+            display2?<Circular_Form 
+                        setDisp={() => {setDisplay2(0)}} 
+                        notice = "Check"
+                        circular="Check"
+                      />:null
+          }
+      {/* <div
         className={
           value === 0
             ? "circular__form_div_not_open"
@@ -134,7 +147,7 @@ const Circular = () => {
             <p style={{ color: "#fff" }}>Add Circular</p>
           </div>
         </div>
-      </div>
+      </div> */}
       <div className="circular__top">
         <div className="circular__top_button">
           <button type="button" className="circular__top_button_date">
@@ -178,7 +191,7 @@ const Circular = () => {
                 <td className="circular__middle_td">{data.notice}</td>
                 <td className="circular__middle_td">{data.attachment}</td>
                 <td className="circular__middle_td">
-                  <button type="button" className="circular__middle_td_edit">
+                  <button type="button" className="circular__middle_td_edit" onClick={handleClick2}>
                     Edit
                   </button>
                   <button type="button" className="circular__middle_td_delete">
