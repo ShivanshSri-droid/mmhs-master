@@ -5,72 +5,6 @@ import email from "../../assets/email.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
 
-const tempData = [
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001235",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001236",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001237",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001238",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001239",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-  {
-    gr_number: "#001240",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    application_type: "School NOC",
-    request_date: "8/02/2022",
-  },
-];
-
 const Application = (props) => {
   const [data, setData] = useState([]);
 
@@ -81,8 +15,6 @@ const Application = (props) => {
         setData(data);
       });
   }, []);
-
-  console.log(data);
 
   return (
     <div className="application">

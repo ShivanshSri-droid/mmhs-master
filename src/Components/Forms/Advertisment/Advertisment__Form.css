@@ -133,3 +133,10 @@
 input:focus {
   outline: none;
 }
+.date {
+  width: 270px;
+  height: 40px;
+  border: 1px solid #c4c4c4;
+  padding: 5px;
+  border-radius: 5px;
+}

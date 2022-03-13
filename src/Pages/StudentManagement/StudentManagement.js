@@ -5,168 +5,11 @@ import download from "../../assets/download.png";
 import email from "../../assets/email.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
-
-const tempData = [
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001235",
-    name: "Shivansh Srivastava",
-    class: "VII",
-    section: "C",
-    grade: "Secondary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-  {
-    gr_number: "#001234",
-    name: "Krishna Saxena",
-    class: "IV",
-    section: "B",
-    grade: "Primary",
-    mName: "Mrs. Johnson",
-    mEmail: "teste@mmhs.com",
-    mPhone: "9876543219",
-    fName: "Mr. Johnson",
-    fEmail: "test1@mmhs.com",
-    fPhone: "1234567891",
-  },
-];
+import GeneratePassword from "../../Components/GeneratePassword/GeneratePassword";
 
 const Student_Management = () => {
   const [data, setData] = useState([]);
+  const [display, setDiplay] = useState(0);
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/students")
@@ -180,6 +23,13 @@ const Student_Management = () => {
 
   return (
     <div className="student">
+      {display ? (
+        <GeneratePassword
+          setDisp={() => {
+            setDiplay(0);
+          }}
+        />
+      ) : null}
       <div className="student__top">
         <div className="student__top_button">
           <button type="button" className="student__top_button_button">
@@ -245,7 +95,12 @@ const Student_Management = () => {
                   </div>
                 </td>
                 <td className="student__middle_td">
-                  <div className="student__middle_td_generate_password">
+                  <div
+                    className="student__middle_td_generate_password"
+                    onClick={() => {
+                      setDiplay(1);
+                    }}
+                  >
                     <a href="#">Generate Password</a>
                   </div>
                 </td>

@@ -7,232 +7,9 @@ import classes from "../../../assets/classes.png";
 import payment from "../../../assets/payment.png";
 import download from "../../../assets/download.png";
 
-const tempData = [
-  {
-    gr_number: "#001234",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001235",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001236",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001237",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001238",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001239",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001240",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001241",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001242",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001243",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001244",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001245",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001246",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001247",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001248",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001249",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-  {
-    gr_number: "#001250",
-    name: "Fanny Siregar",
-    class: "IV",
-    section: "Primary",
-    payment_date: "12 / 12 /2021",
-    tution: "₹ 16,600",
-    computer: "₹ 32,600",
-    miscellaneous: "₹ 89,600",
-    late: "₹ 26,600",
-    due: "₹ 32,600",
-    paid_fee: "₹ 26,600",
-  },
-];
-
 const Report = () => {
   const [data, setData] = useState([]);
+  const [paid, setPaid] = useState(0);
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/feereport")
@@ -328,7 +105,7 @@ const Report = () => {
                 <td className="report__middle_td">{data.late_fee}</td>
                 <td className="report__middle_td">{data.due_amt}</td>
                 <td className="report__middle_td">
-                  <div>
+                  {/* <div>
                     <button
                       type="button"
                       className={`report__middle_td_status  ${
@@ -337,6 +114,17 @@ const Report = () => {
                     >{`${
                       data.status !== "Unpaid" ? "Paid" : "Unpaid"
                     }`}</button>
+                  </div> */}
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setPaid(!paid);
+                      }}
+                      className={`report__middle_td_status  ${
+                        paid ? "paid" : "unpaid"
+                      }`}
+                    >{`${paid ? "Paid" : "Unpaid"}`}</button>
                   </div>
                 </td>
               </tr>

@@ -1,32 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./Advertisment.css";
-import calendar from "../../assets/calendar.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
 import advertiser_banner from "../../assets/advertiser_banner.png";
 import Advertisment_Form from "../../Components/Forms/Advertisment/Advertisment_Form";
-import cancel from "../../assets/cancel.png";
-import drag_drop from "../../assets/drag_drop.png";
-import { DatePicker } from "antd";
+import DeleteCard from "../../Components/Cards/DeleteCard/DeleteCard";
 
 const Advertisment = () => {
-  const [display1,setDisplay1] = useState(0);
-  const [display2,setDisplay2] = useState(0);
-  const [value, setValue] = useState(0);
-  const [startDate, setStartDate] = useState(new Date());
+  const [display1, setDisplay1] = useState(0);
   const [data, setData] = useState([]);
-  const [details, setDetails] = useState({
-    name: "",
-    from_dt: "",
-    to_dt: "",
-    description: "",
-  });
+  const [editData, setEditData] = useState({});
+  const [isEdit, setIsEdit] = useState(false);
+  const [del, setDel] = useState(0);
+  const [delId, setDelId] = useState(0);
 
   const handleClick1 = () => {
     setDisplay1(1);
-  };
-  const handleClick2 = () => {
-    setDisplay2(1);
   };
 
   useEffect(() => {
@@ -37,40 +26,37 @@ const Advertisment = () => {
       });
   }, []);
 
-  const handleChange = (e) => {
-    setDetails({
-      ...details,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async () => {
-    await fetch("https://mmhs-mumbai.herokuapp.com/advertisements", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: details.name,
-        from: details.from_dt,
-        to: details.to_dt,
-        description: details.description,
-      }),
+  const handleDelete = async (id) => {
+    await fetch(`https://mmhs-mumbai.herokuapp.com/advertisements/${id}`, {
+      method: "DELETE",
     });
     window.location.reload();
   };
 
-  console.log(data);
   return (
     <div className="advertisment">
-      {
-            display1?<Advertisment_Form setDisp={() => {setDisplay1(0)}} />:null
-          }
-          {
-            display2?<Advertisment_Form 
-                        setDisp={() => {setDisplay2(0)}} 
-                        notice = "Check"
-                        circular="Check"
-                      />:null
-          }
+      {display1 ? (
+        <Advertisment_Form
+          setDisp={() => {
+            setDisplay1(0);
+          }}
+          data={editData}
+          isEdit={isEdit}
+          setEdit={() => {
+            setIsEdit(false);
+          }}
+        />
+      ) : null}
+      {del ? (
+        <DeleteCard
+          del={() => {
+            handleDelete(delId);
+          }}
+          close={() => {
+            setDel(0);
+          }}
+        />
+      ) : null}
       {/* <div
         className={
           value === 0
@@ -176,13 +162,21 @@ const Advertisment = () => {
                   <button
                     type="button"
                     className="advertisment__middle_td_edit"
-                    onClick={handleClick2}
+                    onClick={() => {
+                      setIsEdit(true);
+                      setEditData(data);
+                      setDisplay1(1);
+                    }}
                   >
                     Edit
                   </button>
                   <button
                     type="button"
                     className="advertisment__middle_td_delete"
+                    onClick={() => {
+                      setDel(1);
+                      setDelId(data.id);
+                    }}
                   >
                     Delete
                   </button>

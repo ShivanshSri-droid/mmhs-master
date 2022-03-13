@@ -3,31 +3,18 @@ import "./Setup.css";
 import left_arrow from "../../../assets/ic_chevron_left.png";
 import right_arrow from "../../../assets/ic_chevron_right.png";
 import Fees_Form from "../../../Components/Forms/Fees/Fees_Form";
-import advertiser_banner from "../../../assets/advertiser_banner.png";
-import cancel from "../../../assets/cancel.png";
-import calendar from "../../../assets/calendar.png";
-import drag_drop from "../../../assets/drag_drop.png";
+import DeleteCard from "../../../Components/Cards/DeleteCard/DeleteCard";
 
 const Setup = () => {
-  const [display1,setDisplay1] = useState(0);
-  const [display2,setDisplay2] = useState(0);
-  const [value, setValue] = useState(0);
+  const [display1, setDisplay1] = useState(0);
   const [data, setData] = useState([]);
-  const [details, setDetails] = useState({
-    section: "",
-    tuition: "",
-    computer: "",
-    miscellaneous: "",
-    total: "",
-    late: "",
-    lateFeeDate: "",
-  });
+  const [editData, setEditData] = useState({});
+  const [isEdit, setIsEdit] = useState(false);
+  const [del, setDel] = useState(0);
+  const [delId, setDelId] = useState(0);
 
   const handleClick1 = () => {
     setDisplay1(1);
-  };
-  const handleClick2 = () => {
-    setDisplay2(1);
   };
 
   useEffect(() => {
@@ -38,132 +25,37 @@ const Setup = () => {
       });
   }, []);
 
-  const handleChange = (e) => {
-    setDetails({
-      ...details,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const handleSubmit = async () => {
-    await fetch("https://mmhs-mumbai.herokuapp.com/feesetup", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        section: details.section,
-        tuition: details.tuition,
-        computer: details.computer,
-        miscellaneous: details.miscellaneous,
-        total: details.total,
-        late: details.late,
-        late_date: details.lateFeeDate,
-      }),
+  const handleDelete = async (id) => {
+    await fetch(`https://mmhs-mumbai.herokuapp.com/feesetup/${id}`, {
+      method: "DELETE",
     });
     window.location.reload();
-    console.log(details);
   };
 
   return (
     <div className="setup">
-      {
-            display1?<Fees_Form setDisp={() => {setDisplay1(0)}} />:null
-          }
-          {
-            display2?<Fees_Form 
-                        setDisp={() => {setDisplay2(0)}} 
-                        notice = "Check"
-                        circular="Check"
-                      />:null
-          }
-      {/* <div
-        className={
-          value === 0 ? "setup__form_div_not_open" : "setup__form_div_open"
-        }
-      >
-        <div className="setup__form">
-          <div className="setup__from_img" onClick={handleClick2}>
-            <img src={cancel} alt="cancel" />
-          </div>
-          <h1>Add New Fees Setup</h1>
-          <div className="setup__form_p">
-            <p>quis nostrud exercitation ullamco</p>
-          </div>
-          <div className="setup__form_input">
-            <h5>Add Grade</h5>
-            <input
-              type="text"
-              name="section"
-              onChange={handleChange}
-              className="setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Tuition Fee</h5>
-            <input
-              type="text"
-              name="tuition"
-              onChange={handleChange}
-              className=" setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Computer Fee</h5>
-            <input
-              type="text"
-              name="computer"
-              onChange={handleChange}
-              className=" setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Miscellaneous Fee</h5>
-            <input
-              type="text"
-              name="miscellaneous"
-              onChange={handleChange}
-              className=" setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Total Fee</h5>
-            <input
-              type="text"
-              name="total"
-              onChange={handleChange}
-              className=" setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Late Fee</h5>
-            <input
-              type="text"
-              name="late"
-              onChange={handleChange}
-              className=" setup__form_input_small"
-            />
-          </div>
-          <div className="setup__form_input ">
-            <h5>Add Late Fee Date</h5>
-            <input
-              type="text"
-              name="lateFeeDate"
-              onChange={handleChange}
-              className=" setup__form_input_small input_date"
-            />
-            <img src={calendar} alt="calendar" />
-          </div>
-          <div className="setup__form_button" onClick={handleSubmit}>
-            <p style={{ color: "#fff" }}>Add Fees Setup</p>
-          </div>
-        </div>
-      </div> */}
-      {/* <div className="setup__top">
-                <div className="setup__top_button_left_most">
-                    <button type="button" className="setup__top_button_setup setup__top_button_go">Add setup</button>
-                </div>
-          </div>
-          <div className="setup__middle"></div>
-          <div className="setup__bottom"></div> */}
+      {display1 ? (
+        <Fees_Form
+          setDisp={() => {
+            setDisplay1(0);
+          }}
+          data={editData}
+          isEdit={isEdit}
+          setEdit={() => {
+            setIsEdit(false);
+          }}
+        />
+      ) : null}
+      {del ? (
+        <DeleteCard
+          del={() => {
+            handleDelete(delId);
+          }}
+          close={() => {
+            setDel(0);
+          }}
+        />
+      ) : null}
       <div className="setup__top">
         <div className="setup__top_button_left_most">
           <button
@@ -198,10 +90,25 @@ const Setup = () => {
                 <td className="setup__middle_td">{data.late}</td>
                 <td className="setup__middle_td">{data.late_date}</td>
                 <td className="setup__middle_td">
-                  <button onClick={handleClick2} type="button" className="setup__middle_td_edit">
+                  <button
+                    type="button"
+                    className="setup__middle_td_edit"
+                    onClick={() => {
+                      setIsEdit(true);
+                      setEditData(data);
+                      setDisplay1(1);
+                    }}
+                  >
                     Edit
                   </button>
-                  <button type="button" className="setup__middle_td_delete">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setDel(1);
+                      setDelId(data.id);
+                    }}
+                    className="setup__middle_td_delete"
+                  >
                     Delete
                   </button>
                 </td>
