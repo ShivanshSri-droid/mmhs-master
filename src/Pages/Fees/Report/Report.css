@@ -67,10 +67,11 @@
   height: 22px;
   width: 22px;
 }
-
+.report__top_button {
+  display: flex;
+}
 .report__top_button_button {
-  height: 35px;
-  width: 175px;
+  padding: 10px 20px;
   margin: 5px 10px;
   background-color: #fff;
   border-radius: 16px;

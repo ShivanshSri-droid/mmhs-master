@@ -10,6 +10,8 @@ import download from "../../../assets/download.png";
 const Report = () => {
   const [data, setData] = useState([]);
   const [paid, setPaid] = useState(0);
+  const [filterPaid, setFilterPaid] = useState();
+  const [filterUnpaid, setFilterUnpaid] = useState();
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/feereport")
@@ -19,7 +21,17 @@ const Report = () => {
       });
   }, []);
 
-  console.log(data);
+  const handleFilter = () => {
+    fetch(
+      `https://mmhs-mumbai.herokuapp.com/feereport/paid=${filterPaid}/unpaid=${filterUnpaid}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  };
+
+  // console.log(data);
 
   return (
     <div className="report">
@@ -46,18 +58,59 @@ const Report = () => {
             </button>
           </div>
           <div className="report__top_button">
-            <button type="button" className="report__top_button_button">
-              <img
+            <button
+              type="button"
+              className="report__top_button_date"
+              style={
+                filterPaid
+                  ? { backgroundColor: "#e6e3e3" }
+                  : { backgroundColor: "#fff" }
+              }
+              onClick={() => {
+                setFilterPaid(true);
+                setFilterUnpaid(false);
+              }}
+            >
+              {/* <img
                 className="report__top_button_img"
                 src={payment}
                 alt="upload"
-              />
-              Payment Status
+              /> */}
+              Paid
+            </button>
+            <button
+              type="button"
+              className="report__top_button_date"
+              style={
+                filterUnpaid
+                  ? { backgroundColor: "#e6e3e3" }
+                  : { backgroundColor: "#fff" }
+              }
+              onClick={() => {
+                setFilterUnpaid(true);
+                setFilterPaid(false);
+              }}
+            >
+              {/* <img
+                className="report__top_button_img"
+                src={payment}
+                alt="upload"
+              /> */}
+              Unpaid
             </button>
           </div>
           <div className="report__top_button">
             <button type="button" className="report__top_button_go">
               Go
+            </button>
+            <button
+              type="button"
+              className="report__top_button_go"
+              onClick={() => {
+                window.location.reload();
+              }}
+            >
+              Clear
             </button>
           </div>
         </div>

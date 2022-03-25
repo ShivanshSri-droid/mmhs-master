@@ -7,6 +7,7 @@ import right_arrow from "../../assets/ic_chevron_right.png";
 
 const Application = (props) => {
   const [data, setData] = useState([]);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/applications")
@@ -16,22 +17,65 @@ const Application = (props) => {
       });
   }, []);
 
+  const handleFilter = async () => {
+    fetch(`https://mmhs-mumbai.herokuapp.com/applications/?dt=${startDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
+  };
+
   return (
     <div className="application">
       <div className="application__top">
         <div className="application__top_button">
-          <button type="button" className="application__top_button_date">
-            <img
-              className="application__top_button_date_img"
-              src={calendar}
-              alt="upload"
-            />
-            Date
-          </button>
+          <div className="filter-container">
+            <div className="datepicker-container">
+              {/* <p>From:</p> */}
+              {/* <DatePicker
+                selected={startDate}
+                className="datepicker"
+                onChange={(date) => setStartDate(date)}
+                dateFormat="dd/MM/yyyy"
+              /> */}
+              <input
+                type="date"
+                name=""
+                className="datepicker"
+                onChange={(e) => {
+                  setStartDate(e.target.value);
+                }}
+              />
+            </div>
+            {/* <div className="datepicker-container">
+              <p>To:</p>
+              <input
+                type="date"
+                name=""
+                className="datepicker"
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                }}
+              />
+            </div> */}
+          </div>
         </div>
         <div className="application__top_button">
-          <button type="button" className="application__top_button_go">
+          <button
+            type="button"
+            className="application__top_button_go"
+            onClick={handleFilter}
+          >
             Go
+          </button>
+          <button
+            type="button"
+            className="circular__top_button_go"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Clear
           </button>
         </div>
       </div>

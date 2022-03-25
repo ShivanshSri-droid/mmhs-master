@@ -87,7 +87,7 @@ const UnpaidCard = () => {
                 />
               </svg>
               <div>
-                <h3>VII-A</h3>
+                <h3>VII</h3>
                 <p>Class</p>
               </div>
             </div>

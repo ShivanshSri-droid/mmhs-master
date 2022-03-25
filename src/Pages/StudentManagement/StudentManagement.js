@@ -10,6 +10,7 @@ import GeneratePassword from "../../Components/GeneratePassword/GeneratePassword
 const Student_Management = () => {
   const [data, setData] = useState([]);
   const [display, setDiplay] = useState(0);
+  const [activate, setActivate] = useState(false);
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/students")
@@ -82,7 +83,9 @@ const Student_Management = () => {
                 <td className="student__middle_td">{data.mother_email}</td>
                 <td className="student__middle_td">{data.mother_phone}</td>
                 <td className="student__middle_td">{data.father_name}</td>
-                <td className="student__middle_td">{data.father_email}</td>
+                <td className="student__middle_td">
+                  <a href={`mailto:${data.father_email}`}></a>
+                </td>
                 <td className="student__middle_td">{data.father_phone}</td>
                 <td className="student__middle_td">
                   <a href="#">
@@ -90,8 +93,18 @@ const Student_Management = () => {
                   </a>
                 </td>
                 <td className="student__middle_td">
-                  <div className="student__middle_td_activate">
-                    <a href="#">Activate</a>
+                  <div
+                    className="student__middle_td_activate"
+                    style={
+                      activate
+                        ? { backgroundColor: "#1eae7a" }
+                        : { backgroundColor: "#cb444a" }
+                    }
+                    onClick={() => {
+                      setActivate(!activate);
+                    }}
+                  >
+                    <a href="#">{activate ? "Activate" : "Deactivate"}</a>
                   </div>
                 </td>
                 <td className="student__middle_td">

@@ -7,6 +7,9 @@ import Circular_Form from "../../Components/Forms/Cicular/Circular_Form";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
 import DeleteCard from "../../Components/Cards/DeleteCard/DeleteCard";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const Circular = () => {
   const [display1, setDisplay1] = useState(0);
@@ -15,6 +18,8 @@ const Circular = () => {
   const [data, setData] = useState([]);
   const [editData, setEditData] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  // const [endDate, setEndDate] = useState(new Date());
 
   const handleClick1 = () => {
     setDisplay1(1);
@@ -33,6 +38,14 @@ const Circular = () => {
       method: "DELETE",
     });
     window.location.reload();
+  };
+
+  const handleFilter = async () => {
+    fetch(`https://mmhs-mumbai.herokuapp.com/circulars/?dt=${startDate}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      });
   };
 
   return (
@@ -61,18 +74,62 @@ const Circular = () => {
       ) : null}
       <div className="circular__top">
         <div className="circular__top_button">
-          <button type="button" className="circular__top_button_date">
+          {/* <input type="date" name="" id="" /> */}
+          <div className="filter-container">
+            <div className="datepicker-container">
+              {/* <p>From:</p> */}
+              {/* <DatePicker
+                selected={startDate}
+                className="datepicker"
+                onChange={(date) => setStartDate(date)}
+                dateFormat="dd/MM/yyyy"
+              /> */}
+              <input
+                type="date"
+                name=""
+                className="datepicker"
+                onChange={(e) => {
+                  setStartDate(e.target.value);
+                }}
+              />
+            </div>
+            {/* <div className="datepicker-container">
+              <p>To:</p>
+              <input
+                type="date"
+                name=""
+                className="datepicker"
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                }}
+              />
+            </div> */}
+          </div>
+          {/* <button type="button" className="circular__top_button_date">
             <img
               className="circular__top_button_date_img"
               src={calendar}
               alt="upload"
             />
             Date
-          </button>
+          </button> */}
         </div>
         <div className="circular__top_button">
-          <button type="button" className="circular__top_button_go">
+          <button
+            type="button"
+            className="circular__top_button_go"
+            onClick={handleFilter}
+          >
             Go
+          </button>
+          <button
+            type="button"
+            className="circular__top_button_go"
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Clear
           </button>
         </div>
         <div className="circular__top_button_left_most">
@@ -94,7 +151,7 @@ const Circular = () => {
             <th className="circular__middle_th">Attachment</th>
             <th className="circular__middle_th"></th>
           </tr>
-          {data.map((data) => {
+          {data?.map((data) => {
             return (
               <tr className="circular__middle_tr">
                 <td className="circular__middle_td">{data.created}</td>
