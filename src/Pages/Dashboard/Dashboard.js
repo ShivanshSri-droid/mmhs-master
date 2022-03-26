@@ -9,13 +9,13 @@ const Dashboard = () => {
     <div className="dashboard">
       <div className="dashboard__left_container">
         <div className="dashboard__left__top_container">
-          <DashboardCard main="₹3,450" sub="Fees Paid" />
-          <DashboardCard main="₹4,563" sub="Fees Overdue" />
+          <DashboardCard main="0" sub="Fees Paid" />
+          <DashboardCard main="40,500" sub="Fees Overdue" />
         </div>
         <UnpaidCard />
       </div>
       <div className="dashboard__right_container">
-        <GraphCard paid="₹ 459,234.08" due="₹ 23,456"/>
+        <GraphCard paid="₹0" due="₹40,500" />
       </div>
     </div>
   );

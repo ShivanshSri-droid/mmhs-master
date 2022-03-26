@@ -6,21 +6,41 @@ import email from "../../assets/email.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
 import GeneratePassword from "../../Components/GeneratePassword/GeneratePassword";
+import axios from "axios";
+import ActivateCard from "../../Components/Cards/ActivateCard/ActivateCard";
+import UploadMaster from "../../Components/Cards/UploadMaster/UploadMaster";
+import { useSearchParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Student_Management = () => {
   const [data, setData] = useState([]);
   const [display, setDiplay] = useState(0);
   const [activate, setActivate] = useState(false);
+  const [isModal, setIsModal] = useState(0);
+  const [isUpload, setIsUpload] = useState(false);
+  // const [searchParams, setSearchParams] = useSearchParams();
+  const { state } = useLocation();
+
+  // console.log(searchParams.get("gr"));
 
   useEffect(() => {
+    if (state?.gr) {
+      return fetch(`https://mmhs-mumbai.herokuapp.com/students?gr=${state.gr}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        });
+    }
     fetch("https://mmhs-mumbai.herokuapp.com/students")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
       });
-  }, []);
+  }, [state]);
 
-  console.log(data);
+  const handleDownload = () => {
+    fetch("https://mmhs-mumbai.herokuapp.com/students/download");
+  };
 
   return (
     <div className="student">
@@ -31,9 +51,37 @@ const Student_Management = () => {
           }}
         />
       ) : null}
+      {isModal ? (
+        <ActivateCard
+          action={() => {
+            setActivate(!activate);
+            setIsModal(0);
+          }}
+          close={() => {
+            setIsModal(0);
+          }}
+        />
+      ) : null}
+      {isUpload ? (
+        <UploadMaster
+          close={() => {
+            setIsUpload(false);
+          }}
+        />
+      ) : null}
       <div className="student__top">
         <div className="student__top_button">
-          <button type="button" className="student__top_button_button">
+          {/* <form onSubmit={handleFileUpload}>
+            <input type="file" name="file" onChange={handleUpload} />
+            <input type="submit" value="Upload" />
+          </form> */}
+          <button
+            type="button"
+            className="student__top_button_button"
+            onClick={() => {
+              setIsUpload(true);
+            }}
+          >
             <img
               className="student__top_button_img"
               src={upload}
@@ -43,7 +91,11 @@ const Student_Management = () => {
           </button>
         </div>
         <div className="student__top_button">
-          <button type="button" className="student__top_button_button">
+          <button
+            type="button"
+            className="student__top_button_button"
+            onClick={handleDownload}
+          >
             <img
               className="student__top_button_img"
               src={download}
@@ -101,7 +153,7 @@ const Student_Management = () => {
                         : { backgroundColor: "#cb444a" }
                     }
                     onClick={() => {
-                      setActivate(!activate);
+                      setIsModal(1);
                     }}
                   >
                     <a href="#">{activate ? "Activate" : "Deactivate"}</a>

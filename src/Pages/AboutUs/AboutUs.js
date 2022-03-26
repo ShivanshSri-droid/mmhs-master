@@ -4,6 +4,8 @@ import logoL from "../../assets/logoLarge.png";
 import map from "../../assets/map.png";
 import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
+import { storage } from "../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const AboutUs = (props) => {
   const [value, setValue] = useState(0);
@@ -14,6 +16,7 @@ const AboutUs = (props) => {
     email: "",
     address: "",
   });
+  const [image, setImage] = useState();
 
   const handleClick1 = () => {
     setValue(1);
@@ -31,6 +34,13 @@ const AboutUs = (props) => {
   }, []);
 
   const onSubmit = async () => {
+    const storageRef = ref(storage, `aboutUs/${image.name}`);
+    await uploadBytes(storageRef, image).then((snapshot) => {
+      console.log("uploaded");
+    });
+    const downloadUrl = await getDownloadURL(
+      ref(storage, `advertisements/${image.name}`)
+    );
     await fetch("https://mmhs-mumbai.herokuapp.com/about", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -39,6 +49,7 @@ const AboutUs = (props) => {
         phone: details.phone,
         address: details.address,
         email: details.email,
+        picture: downloadUrl,
       }),
     });
     window.location.reload();
@@ -52,6 +63,10 @@ const AboutUs = (props) => {
   };
 
   console.log(details);
+
+  const handleUpload = (e) => {
+    setImage(e.target.files[0]);
+  };
 
   return (
     <div className="about_us">
@@ -72,14 +87,15 @@ const AboutUs = (props) => {
           </div>
           <div className="about_us__form_input">
             <h5>Add Logo</h5>
-            <div
+            <input type="file" name="" id="" onChange={handleUpload} />
+            {/* <div
               className="about_us__form_drop_zone"
               style={{
                 background: `url(${drag_drop})`,
                 backgroundSize: "contain",
                 backgroundSize: "270px 110px",
               }}
-            ></div>
+            ></div> */}
           </div>
           <div className="about_us__form_input">
             <h5>Add About Us</h5>

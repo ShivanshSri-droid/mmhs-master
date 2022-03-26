@@ -33,6 +33,8 @@ const Advertisment = () => {
     window.location.reload();
   };
 
+  console.log(data);
+
   return (
     <div className="advertisment">
       {display1 ? (
@@ -155,7 +157,15 @@ const Advertisment = () => {
                 <td className="advertisment__middle_td">{data.from_dt}</td>
                 <td className="advertisment__middle_td">{data.name}</td>
                 <td className="advertisment__middle_td banner">
-                  <img src={advertiser_banner}></img>
+                  <img
+                    src={data.banner}
+                    alt=""
+                    style={{
+                      width: "300px",
+                      height: "150px",
+                      borderRadius: "10px",
+                    }}
+                  ></img>
                 </td>
                 <td className="advertisment__middle_td">{data.description}</td>
                 <td className="advertisment__middle_td">

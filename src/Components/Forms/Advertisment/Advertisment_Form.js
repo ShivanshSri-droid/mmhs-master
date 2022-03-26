@@ -3,6 +3,8 @@ import "./Advertisment__Form.css";
 import drag_drop from "../../../assets/drag_drop.png";
 import calendar from "../../../assets/calendar.png";
 import cancel from "../../../assets/cancel.png";
+import { storage } from "../../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const Advertisment_Form = (props) => {
   const [details, setDetails] = useState({
@@ -11,6 +13,7 @@ const Advertisment_Form = (props) => {
     to_dt: "",
     description: "",
   });
+  const [image, setImage] = useState();
 
   const isEdit = props.isEdit;
   const data = props.data;
@@ -41,6 +44,14 @@ const Advertisment_Form = (props) => {
 
   const handleSubmit = async () => {
     if (!isEdit) {
+      const storageRef = ref(storage, `advertisements/${image.name}`);
+      await uploadBytes(storageRef, image).then((snapshot) => {
+        console.log("uploaded");
+      });
+      const downloadUrl = await getDownloadURL(
+        ref(storage, `advertisements/${image.name}`)
+      );
+      console.log(downloadUrl);
       await fetch("https://mmhs-mumbai.herokuapp.com/advertisements", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -48,6 +59,7 @@ const Advertisment_Form = (props) => {
           name: details.name,
           from: details.from_dt,
           to: details.to_dt,
+          banner: downloadUrl,
           description: details.description,
         }),
       });
@@ -69,6 +81,12 @@ const Advertisment_Form = (props) => {
     window.location.reload();
   };
 
+  const handleUpload = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  console.log(image);
+
   return (
     <div className={"advertisment__form_div_open"}>
       <div className="advertisment__form">
@@ -77,7 +95,7 @@ const Advertisment_Form = (props) => {
         </div>
         <h1>Add New advertisment</h1>
         <div className="advertisment__form_p">
-          <p>quis nostrud exercitation ullamco</p>
+          {/* <p>quis nostrud exercitation ullamco</p> */}
         </div>
         <div className="advertisment__form_input">
           <h5>Add Advertisment Title</h5>
@@ -120,14 +138,21 @@ const Advertisment_Form = (props) => {
         </div>
         <div className="advertisment__form_input">
           <h5>Add Banner</h5>
-          <div
+          <input
+            type="file"
+            name="banner"
+            id=""
+            style={{ marginTop: "20px", marginBottom: "20px" }}
+            onChange={handleUpload}
+          />
+          {/* <div
             className="advertisment__form_drop_zone"
             style={{
               background: `url(${drag_drop})`,
               backgroundSize: "contain",
               backgroundSize: "270px 110px",
             }}
-          ></div>
+          ></div> */}
         </div>
         <div className="advertisment__form_button" onClick={handleSubmit}>
           <p style={{ color: "#fff" }}>Add advertisment</p>

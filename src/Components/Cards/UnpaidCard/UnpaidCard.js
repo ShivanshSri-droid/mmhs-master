@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./unpaidCard.css";
 
 const UnpaidCard = () => {
-  const data = [
+  const oldData = [
     {
       img: "https://picsum.photos/seed/kdkdie/200",
       name: "Dawud Khan",
@@ -53,21 +53,31 @@ const UnpaidCard = () => {
     },
   ];
 
+  const [newData, setNewData] = useState();
+
+  useEffect(() => {
+    fetch("https://mmhs-mumbai.herokuapp.com/feereport/?unpaid=true")
+      .then((response) => response.json())
+      .then((data) => {
+        setNewData(data);
+      });
+  }, []);
+
   return (
     <div className="unpaid_card">
       <h3>Unpaid Student Intuition</h3>
       <h6>You have 456 contacts</h6>
       <div></div>
-      {data.map((data) => {
+      {newData?.map((data) => {
         return (
           <div className="list_box">
-            <div
+            {/* <div
               className="img_box"
-              style={{ background: `url(${data.img})` }}
-            ></div>
+              style={{ background: `url(${oldData[0].img})` }}
+            ></div> */}
             <div className="list_info1">
               <h4>{data.name}</h4>
-              <p>GR 1234567</p>
+              <p>GR {data.gr}</p>
             </div>
             <div className="list_info2">
               <svg
@@ -87,11 +97,11 @@ const UnpaidCard = () => {
                 />
               </svg>
               <div>
-                <h3>VII</h3>
+                <h3>IV</h3>
                 <p>Class</p>
               </div>
             </div>
-            <p className="list_info3">₹1,50,21</p>
+            <p className="list_info3">{data.due_amt}</p>
           </div>
         );
       })}
