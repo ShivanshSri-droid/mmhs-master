@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Fees_From.css";
 import cancel from "../../../assets/cancel.png";
+import Loader from "../../Loader/Loader";
 
 const Fees_Form = (props) => {
   const [details, setDetails] = useState({
@@ -12,6 +13,7 @@ const Fees_Form = (props) => {
     late: "",
     lateFeeDate: "",
   });
+  const [loading, setLoading] = useState(0);
 
   const isEdit = props.isEdit;
   const data = props.data;
@@ -44,6 +46,7 @@ const Fees_Form = (props) => {
   }, [isEdit]);
 
   const handleSubmit = async () => {
+    setLoading(1);
     if (!isEdit) {
       await fetch("https://mmhs-mumbai.herokuapp.com/feesetup", {
         method: "POST",
@@ -73,6 +76,7 @@ const Fees_Form = (props) => {
         }),
       });
     }
+    setLoading(0);
     window.location.reload();
   };
 
@@ -83,9 +87,6 @@ const Fees_Form = (props) => {
           <img src={cancel} alt="cancel" />
         </div>
         <h1>Add New Fees Setup</h1>
-        <div className="setup__form_p">
-          <p>quis nostrud exercitation ullamco</p>
-        </div>
         <div className="setup__form_input">
           <h5>Add Grade</h5>
           <input
@@ -156,7 +157,11 @@ const Fees_Form = (props) => {
           />
         </div>
         <div className="setup__form_button" onClick={handleSubmit}>
-          <p style={{ color: "#fff" }}>Add Fees Setup</p>
+          {loading ? (
+            <Loader small={true} />
+          ) : (
+            <p style={{ color: "#fff" }}>Add Fees Setup</p>
+          )}
         </div>
       </div>
     </div>

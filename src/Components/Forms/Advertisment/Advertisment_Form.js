@@ -5,6 +5,7 @@ import calendar from "../../../assets/calendar.png";
 import cancel from "../../../assets/cancel.png";
 import { storage } from "../../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Loader from "../../Loader/Loader";
 
 const Advertisment_Form = (props) => {
   const [details, setDetails] = useState({
@@ -14,6 +15,7 @@ const Advertisment_Form = (props) => {
     description: "",
   });
   const [image, setImage] = useState();
+  const [loading, setLoading] = useState(0);
 
   const isEdit = props.isEdit;
   const data = props.data;
@@ -43,6 +45,7 @@ const Advertisment_Form = (props) => {
   };
 
   const handleSubmit = async () => {
+    setLoading(1);
     if (!isEdit) {
       const storageRef = ref(storage, `advertisements/${image.name}`);
       await uploadBytes(storageRef, image).then((snapshot) => {
@@ -78,6 +81,7 @@ const Advertisment_Form = (props) => {
         }
       );
     }
+    setLoading(0);
     window.location.reload();
   };
 
@@ -155,7 +159,11 @@ const Advertisment_Form = (props) => {
           ></div> */}
         </div>
         <div className="advertisment__form_button" onClick={handleSubmit}>
-          <p style={{ color: "#fff" }}>Add advertisment</p>
+          {loading ? (
+            <Loader small={true} />
+          ) : (
+            <p style={{ color: "#fff" }}>Add advertisment</p>
+          )}
         </div>
       </div>
     </div>

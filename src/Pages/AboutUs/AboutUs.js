@@ -6,6 +6,7 @@ import cancel from "../../assets/cancel.png";
 import drag_drop from "../../assets/drag_drop.png";
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import Loader from "../../Components/Loader/Loader";
 
 const AboutUs = (props) => {
   const [value, setValue] = useState(0);
@@ -17,6 +18,7 @@ const AboutUs = (props) => {
     address: "",
   });
   const [image, setImage] = useState();
+  const [loading, setLoading] = useState(0);
 
   const handleClick1 = () => {
     setValue(1);
@@ -82,9 +84,6 @@ const AboutUs = (props) => {
             <img src={cancel} alt="cancel" />
           </div>
           <h1>Add New About Us</h1>
-          <div className="about_us__form_p">
-            <p>quis nostrud exercitation ullamco</p>
-          </div>
           <div className="about_us__form_input">
             <h5>Add Logo</h5>
             <input type="file" name="" id="" onChange={handleUpload} />
@@ -106,14 +105,6 @@ const AboutUs = (props) => {
               className="about_us__form_text_input"
               required
             />
-          </div>
-          <div className="about_us__form_input">
-            <h5>Add Longitude</h5>
-            <input type="text" className="about_us__form_input_small" />
-          </div>
-          <div className="about_us__form_input">
-            <h5>Add Latitude</h5>
-            <input type="text" className="about_us__form_input_small" />
           </div>
           <div className="about_us__form_input">
             <h5>Add Phone</h5>
@@ -146,7 +137,11 @@ const AboutUs = (props) => {
             />
           </div>
           <div className="about_us__form_button" onClick={onSubmit}>
-            <p style={{ color: "#fff" }}>Submit</p>
+            {loading ? (
+              <Loader small={true} />
+            ) : (
+              <p style={{ color: "#fff" }}>Submit</p>
+            )}
           </div>
         </div>
       </div>

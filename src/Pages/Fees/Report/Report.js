@@ -6,12 +6,14 @@ import calendar from "../../../assets/calendar.png";
 import classes from "../../../assets/classes.png";
 import payment from "../../../assets/payment.png";
 import download from "../../../assets/download.png";
+import ActivateCard from "../../../Components/Cards/ActivateCard/ActivateCard";
 
 const Report = () => {
   const [data, setData] = useState([]);
   const [paid, setPaid] = useState(0);
   const [filterPaid, setFilterPaid] = useState();
   const [filterUnpaid, setFilterUnpaid] = useState();
+  const [isModal, setIsModal] = useState(0);
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/feereport")
@@ -35,6 +37,17 @@ const Report = () => {
 
   return (
     <div className="report">
+      {isModal ? (
+        <ActivateCard
+          action={() => {
+            setPaid(!paid);
+            setIsModal(0);
+          }}
+          close={() => {
+            setIsModal(0);
+          }}
+        />
+      ) : null}
       <div className="report__top">
         <div className="report__top_left">
           <div className="report__top_button">
@@ -172,7 +185,7 @@ const Report = () => {
                     <button
                       type="button"
                       onClick={() => {
-                        setPaid(!paid);
+                        setIsModal(1);
                       }}
                       className={`report__middle_td_status  ${
                         paid ? "paid" : "unpaid"

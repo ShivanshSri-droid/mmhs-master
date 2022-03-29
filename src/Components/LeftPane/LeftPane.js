@@ -19,7 +19,7 @@ const LeftPane = () => {
         </div>
       </div>
       <div className="user_box">
-        <div className="user_picture"></div>
+        {/* <div className="user_picture"></div> */}
         <div className="user_info">
           <h3>Shelock Holmes</h3>
           <p>Super Admin</p>
