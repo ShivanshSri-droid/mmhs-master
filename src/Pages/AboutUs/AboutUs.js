@@ -158,7 +158,7 @@ const AboutUs = (props) => {
         <div className="about_us__middle_div">About School</div>
         <div className="about_us__middle_p_map">
           <p>{data ? data.description : "loading..."}</p>
-          <img src={map} alt="map" />
+          <img src={data?.picture} alt="map" />
         </div>
       </div>
       <div className="about_us__bottom">
