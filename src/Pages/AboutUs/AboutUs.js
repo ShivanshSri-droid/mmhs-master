@@ -36,13 +36,11 @@ const AboutUs = (props) => {
   }, []);
 
   const onSubmit = async () => {
-    const storageRef = ref(storage, `aboutUs/${image.name}`);
+    const storageRef = ref(storage, `aboutUs/map`);
     await uploadBytes(storageRef, image).then((snapshot) => {
       console.log("uploaded");
     });
-    const downloadUrl = await getDownloadURL(
-      ref(storage, `advertisements/${image.name}`)
-    );
+    const downloadUrl = await getDownloadURL(ref(storage, `aboutUs/map`));
     await fetch("https://mmhs-mumbai.herokuapp.com/about", {
       method: "post",
       headers: { "Content-Type": "application/json" },
