@@ -36,6 +36,7 @@ const AboutUs = (props) => {
   }, []);
 
   const onSubmit = async () => {
+    setLoading(1);
     const storageRef = ref(storage, `aboutUs/map`);
     await uploadBytes(storageRef, image).then((snapshot) => {
       console.log("uploaded");
@@ -52,6 +53,7 @@ const AboutUs = (props) => {
         picture: downloadUrl,
       }),
     });
+    setLoading(0);
     window.location.reload();
   };
 
