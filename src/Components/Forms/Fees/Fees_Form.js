@@ -89,13 +89,19 @@ const Fees_Form = (props) => {
         <h1>Add New Fees Setup</h1>
         <div className="setup__form_input">
           <h5>Add Grade</h5>
-          <input
+          {/* <input
             type="text"
             name="section"
             defaultValue={isEdit ? data.section : null}
             onChange={handleChange}
             className="setup__form_input_small"
-          />
+          /> */}
+          <select name="grades" id="grades">
+            <option value="Pre-Primary">Pre-Primary</option>
+            <option value="Nursery">Nursery</option>
+            <option value="Primary">Primary</option>
+            <option value="Secondary">Secondary</option>
+          </select>
         </div>
         <div className="setup__form_input ">
           <h5>Add Tuition Fee</h5>

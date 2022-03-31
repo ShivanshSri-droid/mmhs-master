@@ -85,7 +85,7 @@ const AboutUs = (props) => {
           </div>
           <h1>Add New About Us</h1>
           <div className="about_us__form_input">
-            <h5>Add Logo</h5>
+            <h5>Add Map Screenshot</h5>
             <input type="file" name="" id="" onChange={handleUpload} />
             {/* <div
               className="about_us__form_drop_zone"

@@ -111,7 +111,7 @@ const Student_Management = () => {
             <th className="student__middle_th">GR Number</th>
             <th className="student__middle_th">Name</th>
             <th className="student__middle_th">Class</th>
-            <th className="student__middle_th">Section</th>
+            {/* <th className="student__middle_th">Section</th> */}
             <th className="student__middle_th">Grade</th>
             <th className="student__middle_th">Mother Name</th>
             <th className="student__middle_th">Mother E-mail</th>
@@ -129,7 +129,7 @@ const Student_Management = () => {
                 <td className="student__middle_td">{data.gr}</td>
                 <td className="student__middle_td">{data.name}</td>
                 <td className="student__middle_td">{data.class}</td>
-                <td className="student__middle_td">{data.section}</td>
+                {/* <td className="student__middle_td">{data.section}</td> */}
                 <td className="student__middle_td">{data.grade}</td>
                 <td className="student__middle_td">{data.mother_name}</td>
                 <td className="student__middle_td">{data.mother_email}</td>

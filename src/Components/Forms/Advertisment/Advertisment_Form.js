@@ -125,7 +125,7 @@ const Advertisment_Form = (props) => {
           <input
             type="date"
             className="date"
-            name="from_dt"
+            name="to_dt"
             onChange={handleChange}
           />
         </div>

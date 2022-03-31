@@ -85,7 +85,7 @@ const Application = (props) => {
             <th className="application__middle_th">GR Number</th>
             <th className="application__middle_th">Name</th>
             <th className="application__middle_th">Class</th>
-            <th className="application__middle_th">Section</th>
+            {/* <th className="application__middle_th">Section</th> */}
             <th className="application__middle_th">Grade</th>
             <th className="application__middle_th">Application Type</th>
             <th className="application__middle_th">Request Date</th>
@@ -98,7 +98,7 @@ const Application = (props) => {
                 <td className="application__middle_td">{data.gr}</td>
                 <td className="application__middle_td">{data.name}</td>
                 <td className="application__middle_td">{data.class}</td>
-                <td className="application__middle_td">{data.section}</td>
+                {/* <td className="application__middle_td">{data.section}</td> */}
                 <td className="application__middle_td">{data.grade}</td>
                 <td className="application__middle_td">
                   {data.application_type}

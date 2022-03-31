@@ -14,6 +14,7 @@ const Report = () => {
   const [filterPaid, setFilterPaid] = useState();
   const [filterUnpaid, setFilterUnpaid] = useState();
   const [isModal, setIsModal] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/feereport")
@@ -24,16 +25,33 @@ const Report = () => {
   }, []);
 
   const handleFilter = () => {
-    fetch(
-      `https://mmhs-mumbai.herokuapp.com/feereport/paid=${filterPaid}/unpaid=${filterUnpaid}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      });
+    if (filterPaid) {
+      fetch(
+        `https://mmhs-mumbai.herokuapp.com/feereport/unpaid=${filterUnpaid}`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        });
+    }
+    if (startDate) {
+      fetch(`https://mmhs-mumbai.herokuapp.com/feereport/?dt=${startDate}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setData(data);
+        });
+    }
+    // fetch(
+    //   `https://mmhs-mumbai.herokuapp.com/feereport/paid=${filterPaid}/unpaid=${filterUnpaid}`
+    // )
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     setData(data);
+    //   });
+    // console.log(filterPaid);
   };
 
-  // console.log(data);
+  console.log(data);
 
   return (
     <div className="report">
@@ -50,7 +68,7 @@ const Report = () => {
       ) : null}
       <div className="report__top">
         <div className="report__top_left">
-          <div className="report__top_button">
+          {/* <div className="report__top_button">
             <button type="button" className="report__top_button_date">
               <img
                 className="report__top_button_date_img"
@@ -59,16 +77,16 @@ const Report = () => {
               />
               Class
             </button>
-          </div>
+          </div> */}
           <div className="report__top_button">
-            <button type="button" className="report__top_button_date">
-              <img
-                className="report__top_button_date_img"
-                src={calendar}
-                alt="upload"
-              />
-              Date
-            </button>
+            <input
+              type="date"
+              name=""
+              className="datepicker"
+              onChange={(e) => {
+                setStartDate(e.target.value);
+              }}
+            />
           </div>
           <div className="report__top_button">
             <button
@@ -113,7 +131,11 @@ const Report = () => {
             </button>
           </div>
           <div className="report__top_button">
-            <button type="button" className="report__top_button_go">
+            <button
+              type="button"
+              className="report__top_button_go"
+              onClick={handleFilter}
+            >
               Go
             </button>
             <button
@@ -160,7 +182,7 @@ const Report = () => {
               <tr className="report__middle_tr scroll">
                 <td className="report__middle_td">{data.gr}</td>
                 <td className="report__middle_td">{data.name}</td>
-                <td className="report__middle_td">{data.class}</td>
+                {/* <td className="report__middle_td">{data.class}</td> */}
                 <td className="report__middle_td">{data.section}</td>
                 <td className="report__middle_td">{data.payment_dt}</td>
                 <td className="report__middle_td">{data.tuition_fee}</td>
