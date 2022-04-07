@@ -39,7 +39,31 @@ const Student_Management = () => {
   }, [state]);
 
   const handleDownload = () => {
-    fetch("https://mmhs-mumbai.herokuapp.com/students/download");
+    const fileName = "students.csv";
+    fetch("https://mmhs-mumbai.herokuapp.com/students/download", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        // Security Headers if needed
+      },
+      body: undefined,
+    })
+      .then((data) => {
+        return data.blob();
+      })
+      .then((data) => {
+        if (data.size === 0) {
+          throw new Error("File not found");
+        }
+        const fileURL = URL.createObjectURL(data);
+        const downloadLink = document.createElement("a");
+        downloadLink.href = fileURL;
+        downloadLink.download = fileName;
+        downloadLink.click();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

@@ -192,6 +192,7 @@ const Report = () => {
                 <td className="report__middle_td">{data.miscellaneous_fee}</td>
                 <td className="report__middle_td">{data.late_fee}</td>
                 <td className="report__middle_td">{data.due_amt}</td>
+                <td className="report__middle_td">{data.due_amt}</td>
                 <td className="report__middle_td">
                   {/* <div>
                     <button

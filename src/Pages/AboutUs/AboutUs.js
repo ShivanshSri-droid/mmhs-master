@@ -18,6 +18,7 @@ const AboutUs = (props) => {
     address: "",
   });
   const [image, setImage] = useState();
+  const [logo, setLogo] = useState();
   const [loading, setLoading] = useState(0);
 
   const handleClick1 = () => {
@@ -38,10 +39,15 @@ const AboutUs = (props) => {
   const onSubmit = async () => {
     setLoading(1);
     const storageRef = ref(storage, `aboutUs/map`);
+    const logoRef = ref(storage, "aboutUs/logo");
     await uploadBytes(storageRef, image).then((snapshot) => {
       console.log("uploaded");
     });
+    await uploadBytes(logoRef, logo).then((snapshot) => {
+      console.log("uploaded");
+    });
     const downloadUrl = await getDownloadURL(ref(storage, `aboutUs/map`));
+    const logoUrl = await getDownloadURL(ref(storage, `aboutUs/logo`));
     await fetch("https://mmhs-mumbai.herokuapp.com/about", {
       method: "post",
       headers: { "Content-Type": "application/json" },
@@ -51,6 +57,7 @@ const AboutUs = (props) => {
         address: details.address,
         email: details.email,
         picture: downloadUrl,
+        logo: logoUrl,
       }),
     });
     setLoading(0);
@@ -69,6 +76,9 @@ const AboutUs = (props) => {
   const handleUpload = (e) => {
     setImage(e.target.files[0]);
   };
+  const handleLogoUpload = (e) => {
+    setLogo(e.target.files[0]);
+  };
 
   return (
     <div className="about_us">
@@ -84,6 +94,18 @@ const AboutUs = (props) => {
             <img src={cancel} alt="cancel" />
           </div>
           <h1>Add New About Us</h1>
+          <div className="about_us__form_input">
+            <h5>Add School Logo</h5>
+            <input type="file" name="" id="" onChange={handleLogoUpload} />
+            {/* <div
+              className="about_us__form_drop_zone"
+              style={{
+                background: `url(${drag_drop})`,
+                backgroundSize: "contain",
+                backgroundSize: "270px 110px",
+              }}
+            ></div> */}
+          </div>
           <div className="about_us__form_input">
             <h5>Add Map Screenshot</h5>
             <input type="file" name="" id="" onChange={handleUpload} />
@@ -153,7 +175,7 @@ const AboutUs = (props) => {
       </div>
       <div className="about_us__middle">
         <div>
-          <img className="about_us__middle_logo" src={logoL} alt="logo" />
+          <img className="about_us__middle_logo" src={data?.logo} alt="logo" />
         </div>
         <div className="about_us__middle_div">About School</div>
         <div className="about_us__middle_p_map">
