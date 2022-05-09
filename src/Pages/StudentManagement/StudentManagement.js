@@ -160,7 +160,9 @@ const Student_Management = () => {
                 <td className="student__middle_td">{data.mother_phone}</td>
                 <td className="student__middle_td">{data.father_name}</td>
                 <td className="student__middle_td">
-                  <a href={`mailto:${data.father_email}`}></a>
+                  <a href={`mailto:${data.father_email}`}>
+                    {data.father_email}
+                  </a>
                 </td>
                 <td className="student__middle_td">{data.father_phone}</td>
                 <td className="student__middle_td">

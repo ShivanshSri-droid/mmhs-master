@@ -45,7 +45,7 @@
 
 .student__middle {
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: scroll;
   height: 550px;
   width: 1200px;
   background-color: #fff;

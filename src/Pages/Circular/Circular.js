@@ -160,11 +160,22 @@ const Circular = () => {
                 <td className="circular__middle_td">{data.title}</td>
                 <td className="circular__middle_td">{data.notice}</td>
                 <td className="circular__middle_td">
-                  <img
+                  <a
+                    href={data.attachment}
+                    style={{
+                      color: "blue",
+                      textDecoration: "underline",
+                      cursor: "pointer",
+                    }}
+                    download
+                  >
+                    Download
+                  </a>
+                  {/* <img
                     src={data?.attachment}
                     alt=""
                     style={{ width: "300px", height: "150px" }}
-                  />
+                  /> */}
                 </td>
                 <td className="circular__middle_td">
                   <button

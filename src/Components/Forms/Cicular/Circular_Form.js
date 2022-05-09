@@ -132,10 +132,10 @@ const Circular_Form = (props) => {
           />
         </div>
         <div className="circular__form_input_checkbox">
-          <div className="form-group">
+          {/* <div className="form-group">
             <input type="checkbox" name="all"></input>
             <label for="all">All</label>
-          </div>
+          </div> */}
           <div className="form-group">
             <input type="checkbox" name="all"></input>
             <label for="all">Nursery</label>
