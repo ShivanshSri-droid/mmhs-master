@@ -58,7 +58,7 @@ const GeneratePassword = (props) => {
         alt=""
       ></img>
       <p className="gen-title">New Password For</p>
-      <p>GR Number #123456</p>
+      <p>GR Number ${props.gr}</p>
       <input type="text" id="pass" onChange={handleChange}></input>
       <br></br>
       {custom ? (

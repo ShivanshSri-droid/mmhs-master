@@ -19,6 +19,7 @@ const Student_Management = () => {
   const [isModal, setIsModal] = useState(0);
   const [isUpload, setIsUpload] = useState(false);
   const [id, setId] = useState();
+  const [gr, setGr] = useState();
   // const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useLocation();
 
@@ -86,6 +87,7 @@ const Student_Management = () => {
             setDiplay(0);
           }}
           id={id}
+          gr={gr}
         />
       ) : null}
       {isModal ? (
@@ -207,6 +209,7 @@ const Student_Management = () => {
                     className="student__middle_td_generate_password"
                     onClick={() => {
                       setId(data.id);
+                      setGr(data.gr);
                       setDiplay(1);
                     }}
                   >
