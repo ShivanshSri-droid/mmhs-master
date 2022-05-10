@@ -54,7 +54,7 @@
 
 .application__middle {
   overflow-x: scroll;
-  overflow-y: hidden;
+  overflow-y: scroll;
   height: 550px;
   width: 1200px;
   margin-left: 30px;

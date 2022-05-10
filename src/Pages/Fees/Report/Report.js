@@ -184,15 +184,13 @@ const Report = () => {
                 <td className="report__middle_td">{data.name}</td>
                 {/* <td className="report__middle_td">{data.class}</td> */}
                 <td className="report__middle_td">{data.section}</td>
-                <td className="report__middle_td">{data.payment_dt}</td>
-                <td className="report__middle_td">{data.tuition_fee}</td>
-                <td className="report__middle_td banner">
-                  {data.computer_fee}
-                </td>
-                <td className="report__middle_td">{data.miscellaneous_fee}</td>
-                <td className="report__middle_td">{data.late_fee}</td>
-                <td className="report__middle_td">{data.due_amt}</td>
-                <td className="report__middle_td">{data.due_amt}</td>
+                <td className="report__middle_td">{data.late_date}</td>
+                <td className="report__middle_td">{data.tution}</td>
+                <td className="report__middle_td banner">{data.computer}</td>
+                <td className="report__middle_td">{data.miscellaneous}</td>
+                <td className="report__middle_td">{data.late}</td>
+                <td className="report__middle_td">{data.total}</td>
+                <td className="report__middle_td">{0}</td>
                 <td className="report__middle_td">
                   {/* <div>
                     <button

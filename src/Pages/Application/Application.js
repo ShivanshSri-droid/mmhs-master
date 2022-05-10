@@ -4,10 +4,13 @@ import calendar from "../../assets/calendar.png";
 import email from "../../assets/email.png";
 import left_arrow from "../../assets/ic_chevron_left.png";
 import right_arrow from "../../assets/ic_chevron_right.png";
+import ActivateCard from "../../Components/Cards/ActivateCard/ActivateCard";
 
 const Application = (props) => {
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState(new Date());
+  const [status, setStatus] = useState(false);
+  const [id, setId] = useState();
 
   useEffect(() => {
     fetch("https://mmhs-mumbai.herokuapp.com/applications")
@@ -25,8 +28,29 @@ const Application = (props) => {
       });
   };
 
+  const handleStatus = async () => {
+    await fetch(`https://mmhs-mumbai.herokuapp.com/applications/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        status: "completed",
+      }),
+    });
+    window.location.reload();
+  };
+
   return (
     <div className="application">
+      {status ? (
+        <ActivateCard
+          action={() => {
+            handleStatus();
+          }}
+          close={() => {
+            setStatus(false);
+          }}
+        />
+      ) : null}
       <div className="application__top">
         <div className="application__top_button">
           <div className="filter-container">
@@ -105,8 +129,12 @@ const Application = (props) => {
                 </td>
                 <td className="application__middle_td">{data.requested}</td>
                 <td className="application__middle_td">
-                  <a href="#">
-                    <img src={email} />
+                  <a
+                    href={`mailto:${data.contact}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img src={email} alt="email" />
                   </a>
                 </td>
                 <td className="application__middle_td">
@@ -116,8 +144,12 @@ const Application = (props) => {
                       className={`application__middle_td_status  ${
                         data.status === "pending" ? "pending" : "proceed"
                       }`}
+                      onClick={() => {
+                        setId(data.id);
+                        setStatus(true);
+                      }}
                     >{`${
-                      data.status === "pending" ? "Pending" : "Proceed"
+                      data.status === "pending" ? "Pending" : "Completed"
                     }`}</button>
                   </div>
                 </td>

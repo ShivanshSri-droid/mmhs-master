@@ -70,7 +70,7 @@ const Setup = () => {
       <div className="setup__middle">
         <table>
           <tr className="setup__middle_tr">
-            <th className="setup__middle_th">Section</th>
+            <th className="setup__middle_th">Grade</th>
             <th className="setup__middle_th">Tution Fee</th>
             <th className="setup__middle_th">Computer Fee</th>
             <th className="setup__middle_th">Miscellaneous Fee</th>

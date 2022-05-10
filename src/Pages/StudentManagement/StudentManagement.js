@@ -18,6 +18,7 @@ const Student_Management = () => {
   const [activate, setActivate] = useState(false);
   const [isModal, setIsModal] = useState(0);
   const [isUpload, setIsUpload] = useState(false);
+  const [id, setId] = useState();
   // const [searchParams, setSearchParams] = useSearchParams();
   const { state } = useLocation();
 
@@ -66,6 +67,17 @@ const Student_Management = () => {
       });
   };
 
+  const handleStatus = async () => {
+    await fetch(`https://mmhs-mumbai.herokuapp.com/students/status/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        status: "active",
+      }),
+    });
+    window.location.reload();
+  };
+
   return (
     <div className="student">
       {display ? (
@@ -73,14 +85,12 @@ const Student_Management = () => {
           setDisp={() => {
             setDiplay(0);
           }}
+          id={id}
         />
       ) : null}
       {isModal ? (
         <ActivateCard
-          action={() => {
-            setActivate(!activate);
-            setIsModal(0);
-          }}
+          action={handleStatus}
           close={() => {
             setIsModal(0);
           }}
@@ -166,29 +176,37 @@ const Student_Management = () => {
                 </td>
                 <td className="student__middle_td">{data.father_phone}</td>
                 <td className="student__middle_td">
-                  <a href="#">
-                    <img src={email} />
+                  <a
+                    href={`mailto:${data.mother_email},${data.father_email}`}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    <img src={email} alt="" />
                   </a>
                 </td>
                 <td className="student__middle_td">
                   <div
                     className="student__middle_td_activate"
                     style={
-                      activate
+                      data.status === "active"
                         ? { backgroundColor: "#1eae7a" }
                         : { backgroundColor: "#cb444a" }
                     }
                     onClick={() => {
+                      setId(data.id);
                       setIsModal(1);
                     }}
                   >
-                    <a href="#">{activate ? "Activate" : "Deactivate"}</a>
+                    <a href="#">
+                      {data.status === "active" ? "Activate" : "Deactivate"}
+                    </a>
                   </div>
                 </td>
                 <td className="student__middle_td">
                   <div
                     className="student__middle_td_generate_password"
                     onClick={() => {
+                      setId(data.id);
                       setDiplay(1);
                     }}
                   >
